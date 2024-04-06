@@ -1,0 +1,13 @@
+# Use root/example as user/password credentials
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: db_name
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
