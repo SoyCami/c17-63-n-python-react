@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(dotenv_path=BASE_DIR.joinpath(".env"))
+load_dotenv(dotenv_path=BASE_DIR.parent.joinpath(".env"))
 
 
 def getenv(name: str, default=None):
@@ -18,9 +18,6 @@ def getenv(name: str, default=None):
 
 
 SECRET_KEY = getenv("DJANGO_SECRET_KEY")
-
-# SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -83,7 +80,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": getenv("DJANGO_DATABASE_NAME", "db_name"),
-        "USER": getenv("DJANGO_DATABASE_USERNAME", "db_user"),
+        "USER": getenv("DJANGO_DATABASE_USER", "db_user"),
         "PASSWORD": getenv("DJANGO_DATABASE_PASSWORD", "123456"),
         "HOST": getenv("DJANGO_DATABASE_HOST", "database"),
         "PORT": getenv("DJANGO_DATABASE_PORT", "5432")
