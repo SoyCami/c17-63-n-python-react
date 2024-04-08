@@ -1,0 +1,17 @@
+[flake8]
+ignore = C101,D403,F403,F405,I100,I201,W503,W504,F401
+exclude =
+    **/migrations/*,
+    .git,
+    __pycache__,
+    mypy_cache,
+    venv,
+    env,
+    __init__.py,
+
+
+inline-quotes = double
+filename = *.py
+accept-encodings = utf-8
+max-line-length = 119
+multiline-quotes = double
