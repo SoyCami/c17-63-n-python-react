@@ -1,0 +1,32 @@
+# Use root/example as user/password credentials
+version: '3.8'
+
+services:
+  backend:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: backend
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+        - .:/app
+    ports:
+        - "8000:8000"
+    depends_on:
+        - database
+
+  database:
+    image: postgres:latest
+    restart: always
+    hostname: database
+    environment:
+      POSTGRES_DB: db_name
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    volumes:
+        - pgdata:/var/lib/postgresql/data/
+volumes:
+    pgdata:
+

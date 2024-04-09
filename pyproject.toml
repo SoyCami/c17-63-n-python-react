@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "core"
+version = "0.1.0"
+description = ""
+authors = ["Ferdinand <renanfer14.ls@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.4"
+python-dotenv = "^1.0.1"
+djangorestframework = "^3.15.1"
+django-cors-headers = "^4.3.1"
+drf-spectacular = "^0.27.2"
+psycopg2-binary = "^2.9.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+
+[tool.isort]
+line_length = 119
+multi_line_output = 5
+
+[tool.yapf]
+align_closing_bracket_with_visual_indent = true
+based_on_style = "google"
+coalesce_brackets = true
+column_limit = 119
+dedent_closing_brackets = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
