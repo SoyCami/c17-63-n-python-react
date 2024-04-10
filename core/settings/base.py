@@ -2,10 +2,12 @@ import os
 from pathlib import Path
 from typing import List
 
+from django.apps import AppConfig
 from dotenv import load_dotenv
 
 import sys
 
+AppConfig.default = False
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,7 +41,8 @@ DEFAULT_APPS: List[str] = [
 
 LOCAL_APPS: List[str] = [
     'events.apps.EventsConfig',
-]   
+    "apps.users",
+]
 
 THIRD_PARTY_APPS: List[str] = [
     "rest_framework",
@@ -110,6 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# USER FIELD
+AUTH_USER_MODEL = "users.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
