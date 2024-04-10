@@ -26,7 +26,5 @@ COPY ./poetry.lock /app/
 RUN poetry lock --no-update
 # Install dependencies
 RUN poetry install
-CMD ["copy", ".env.example", ".env"]
-
 # copy project
 COPY ./ ./
