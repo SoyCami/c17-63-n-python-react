@@ -4,8 +4,14 @@ from typing import List
 
 from dotenv import load_dotenv
 
+import sys
+
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Append the path of the "apps" folder to sys.path so that the apps can be imported correctly.
+APPS_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir, 'apps')) 
+sys.path.append(str(APPS_DIR))
 
 load_dotenv(dotenv_path=BASE_DIR.parent.joinpath(".env"))
 
@@ -32,8 +38,8 @@ DEFAULT_APPS: List[str] = [
 ]
 
 LOCAL_APPS: List[str] = [
-    # Register apps here
-]
+    'events.apps.EventsConfig',
+]   
 
 THIRD_PARTY_APPS: List[str] = [
     "rest_framework",
