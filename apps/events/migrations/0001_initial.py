@@ -35,8 +35,14 @@ class Migration(migrations.Migration):
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('has_limit', models.BooleanField()),
                 ('limit', models.IntegerField(blank=True, null=True)),
-                ('event_organizer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('event_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.eventcategory')),
+                (
+                    'event_organizer',
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)
+                ),
+                (
+                    'event_category',
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.eventcategory')
+                ),
             ],
         ),
         migrations.CreateModel(
@@ -52,7 +58,16 @@ class Migration(migrations.Migration):
             name='EventReview',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('rating', models.PositiveIntegerField(choices=[(1, '1 - Muy malo'), (2, '2 - Malo'), (3, '3 - Regular'), (4, '4 - Bueno'), (5, '5 - Excelente')])),
+                (
+                    'rating',
+                    models.PositiveIntegerField(
+                        choices=[(1,
+                                  '1 - Muy malo'), (2,
+                                                    '2 - Malo'), (3,
+                                                                  '3 - Regular'), (4,
+                                                                                   '4 - Bueno'), (5, '5 - Excelente')]
+                    )
+                ),
                 ('review_text', models.TextField(max_length=500)),
                 ('date', models.DateTimeField(auto_now_add=True)),
                 ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.event')),

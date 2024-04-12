@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-# Create your models here.
 from django.db import models
 
 USER_TYPE = (("1", "CUSTOMER"), ("2", "SELLER"), ("3", "ORGANIZER"))
@@ -35,16 +34,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField("Is Staff", default=False)
 
     user_type = models.CharField(default="1", choices=USER_TYPE, max_length=1)
-    first_name = models.CharField("Nombres", max_length=200)
+    name = models.CharField("Nombres", max_length=200)
     last_name = models.CharField("Apellidos", max_length=50)
     email = models.EmailField("Email", max_length=255, unique=True)
     username = models.CharField("Username", max_length=255, unique=True)
     phone = models.CharField("Phone", max_length=20, blank=True, null=True)
+    event_picture = models.ImageField(upload_to="profiles/")
     last_seen = models.DateTimeField(blank=True, null=True)
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["name", "first_last_name"]
+    REQUIRED_FIELDS = ["name", "last_name"]
 
     def __str__(self):
         return self.email
