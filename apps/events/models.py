@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
@@ -18,7 +18,7 @@ class Event(models.Model):
     event_name = models.CharField(max_length=100)
     event_category = models.ForeignKey('EventCategory', on_delete=models.CASCADE)
     event_description = models.TextField()
-    event_organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+    event_organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event_location = models.CharField(max_length=100)
     event_date = models.DateTimeField()
     event_picture = models.ImageField(upload_to='event_pictures/')
@@ -38,7 +38,7 @@ class Event(models.Model):
 
 class EventRegisteredUser(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     registration_status = models.CharField(max_length=50)
 
     class Meta:
@@ -64,7 +64,7 @@ class EventReview(models.Model):
         (5, '5 - Excelente'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(choices=RATING_CHOICES)
     review_text = models.TextField(max_length=500)
