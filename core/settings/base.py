@@ -46,6 +46,7 @@ LOCAL_APPS: List[str] = [
 THIRD_PARTY_APPS: List[str] = [
     "rest_framework",
     "corsheaders",
+    "drf_spectacular",
 ]
 
 INSTALLED_APPS: List[str] = DEFAULT_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -140,3 +141,20 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "CORE BACKEND API",
+    "DESCRIPTION": "ENGINE BEHIND OUR SYSTEM",
+    "VERSION": "0.1.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SCHEMA_PATH_PREFIX": "/api/v1/",
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        #"displayOperationId": True,
+    },
+}
