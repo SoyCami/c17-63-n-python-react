@@ -24,7 +24,7 @@ from typing import List
 urlpatterns: List[str] = [
     path('admin/', admin.site.urls),
     path('api/v1/', include([
-        path("api/v1/", include("apps.users.urls", "users")),
+        path("api/v1/", include(("users.urls", "users"))),
         path('events/', include(('events.urls', 'events'))),
     ])),
 ]
