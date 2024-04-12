@@ -15,7 +15,15 @@ class EventCategory(models.Model):
     def __str__(self):
         return self.name
 
-
+class Interests(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    interest_1 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name='interest_1') 
+    interest_2 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name='interest_2')
+    interest_3 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name='interest_3')
+    
+    def __str__(self):
+        return self.user.name
+    
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
     event_category = models.ForeignKey("EventCategory", on_delete=models.CASCADE)
