@@ -23,9 +23,9 @@ class Event(models.Model):
     event_date = models.DateTimeField()
     event_picture = models.ImageField(upload_to='event_pictures/')
     paid = models.BooleanField()
-    price = models.DecimalField(decimal_places=2, max_digits=10)
+    price = models.DecimalField(decimal_places=2, max_digits=10, default=None)
     has_limit = models.BooleanField()
-    limit = models.IntegerField(null=True, blank=True)
+    limit = models.IntegerField(default=None)
 
     def clean(self):
         super().clean()
