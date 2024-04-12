@@ -2,8 +2,8 @@ from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from apps.users.models import User
-from apps.users.serializers import ChangePasswordSerializer, UpdateProfileSerializer, UserSerializer
+from .models import User
+from .serializers import ChangePasswordSerializer, UpdateProfileSerializer, UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):

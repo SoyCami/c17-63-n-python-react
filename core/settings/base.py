@@ -40,7 +40,7 @@ DEFAULT_APPS: List[str] = [
 
 LOCAL_APPS: List[str] = [
     "events.apps.EventsConfig",
-    "apps.users",
+    "users",
 ]
 
 THIRD_PARTY_APPS: List[str] = [
@@ -91,7 +91,7 @@ DATABASES = {
         "USER": getenv("DJANGO_DATABASE_USER", "db_user"),
         "PASSWORD": getenv("DJANGO_DATABASE_PASSWORD", "123456"),
         "HOST": getenv("DJANGO_DATABASE_HOST", "database"),
-        "PORT": getenv("DJANGO_DATABASE_PORT", "5432"),
+        "PORT": getenv("DJANGO_DATABASE_PORT", "5432")
     }
 }
 
