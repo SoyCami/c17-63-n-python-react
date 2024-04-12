@@ -10,14 +10,6 @@ install-pre-commit:
 lint:
 	poetry run pre-commit run --all-files
 
-.PHONY: migrate
-migrate:
-	poetry run python manage.py migrate
-
-.PHONY: makemigrations
-makemigrations:
-	poetry run python manage.py makemigrations
-
 .PHONY: runserver
 runserver:
 	poetry run python manage.py runserver
@@ -27,7 +19,4 @@ superuser:
 	poetry run python manage.py createsuperuser
 
 .PHONY: update
-update: install migrate install-pre-commit ;
-
-.PHONY: upservices
-upservices: docker version ;
+update: install install-pre-commit ;

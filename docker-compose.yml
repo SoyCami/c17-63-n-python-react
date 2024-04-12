@@ -4,7 +4,6 @@ version: '3.8'
 services:
   backend:
     build:
-        context: .
         dockerfile: Dockerfile
     container_name: backend
     command: bash -c "python manage.py runserver 0.0.0.0:8000"

@@ -1,5 +1,5 @@
+from typing import List
+
 from django.urls import path
 
-urlpatterns = [
-    
-]
+urlpatterns: List[str] = []
