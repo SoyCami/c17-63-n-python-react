@@ -63,4 +63,4 @@ class EventReviewWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EventReview
-        exclude = ["user", "date"]
+        exclude = ["user"]

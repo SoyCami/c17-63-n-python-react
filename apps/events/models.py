@@ -1,3 +1,4 @@
+from base.models import BaseModel
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -6,7 +7,7 @@ from django.utils import timezone
 # Create your models here.
 
 
-class EventCategory(models.Model):
+class EventCategory(BaseModel):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
 
@@ -14,7 +15,7 @@ class EventCategory(models.Model):
         return self.name
 
 
-class Interests(models.Model):
+class Interests(BaseModel):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     interest_1 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_1")
     interest_2 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_2")
@@ -24,7 +25,7 @@ class Interests(models.Model):
         return self.user.name
 
 
-class Event(models.Model):
+class Event(BaseModel):
     event_name = models.CharField(max_length=100)
     event_category = models.ForeignKey("EventCategory", on_delete=models.CASCADE)
     event_description = models.TextField()
@@ -54,7 +55,7 @@ class Event(models.Model):
         return self.event_name
 
 
-class EventRegisteredUser(models.Model):
+class EventRegisteredUser(BaseModel):
     STATUS_CHOICES = (
         ("1", "Pendiente"),
         ("2", "Confirmado"),
@@ -77,7 +78,7 @@ class EventRegisteredUser(models.Model):
         return f"{self.user.email} - {self.event.event_name}"
 
 
-class EventReview(models.Model):
+class EventReview(BaseModel):
     RATING_CHOICES = (
         (1, "1 - Muy malo"),
         (2, "2 - Malo"),
@@ -90,7 +91,6 @@ class EventReview(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(choices=RATING_CHOICES)
     review_text = models.TextField(max_length=500)
-    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.email} - {self.rating}"
