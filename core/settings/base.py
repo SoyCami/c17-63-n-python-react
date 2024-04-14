@@ -38,7 +38,11 @@ DEFAULT_APPS: List[str] = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS: List[str] = ["events", "users", "stores"]
+LOCAL_APPS: List[str] = [
+    "events.apps.EventsConfig",
+    "users.apps.UsersConfig",
+    "stores.apps.StoresConfig",
+]
 
 THIRD_PARTY_APPS: List[str] = [
     "rest_framework",
@@ -78,7 +82,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
