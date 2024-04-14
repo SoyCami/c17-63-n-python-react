@@ -58,10 +58,18 @@ class Order(models.Model):
 
 
 class ProductReview(models.Model):
+    RATING_CHOICES = (
+    (1, '1 - Muy malo'),
+    (2, '2 - Malo'),
+    (3, '3 - Regular'),
+    (4, '4 - Bueno'),
+    (5, '5 - Excelente'),
+    )
+        
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField()
+    rating = models.PositiveIntegerField(choices=RATING_CHOICES)
     review_text = models.TextField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
