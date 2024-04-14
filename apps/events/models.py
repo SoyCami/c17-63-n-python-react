@@ -21,6 +21,11 @@ class Interests(BaseModel):
     interest_2 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_2")
     interest_3 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_3")
 
+    def clean(self):
+        interests = [self.interest_1, self.interest_2, self.interest_3]
+        if len(interests) != len(set(interests)):
+            raise ValidationError("Los intereses no pueden estar repetidos.")
+
     def __str__(self):
         return self.user.name
 
