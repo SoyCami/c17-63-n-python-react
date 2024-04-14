@@ -1,11 +1,14 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
 
 from .models import Event, EventCategory, EventRegisteredUser, EventReview, Interests
-from .permissions import IsCostumerUser, IsOrganizerUser
+from .permissions import IsCustomerUser, IsOrganizerUser
 from .serializers import (
     EventCategorySerializer,
     EventRegisteredUserSerializer,
@@ -45,6 +48,8 @@ class EventViewSet(viewsets.ModelViewSet):
                 IsAuthenticated(),
                 IsOrganizerUser(),
             ]
+        elif self.action == "list_by_interests":
+            return [IsAuthenticated(), IsCustomerUser()]
         return [
             IsAuthenticatedOrReadOnly(),
         ]
@@ -70,6 +75,24 @@ class EventViewSet(viewsets.ModelViewSet):
             return super().destroy(request, *args, **kwargs)
         else:
             raise PermissionDenied("Solo el organizador puede eliminar este evento.")
+
+    @action(detail=False, methods=['get'])
+    def list_by_interests(self, request):
+        try:
+            user_interests = request.user.interests
+        except ObjectDoesNotExist as e:
+            print(e)
+            queryset = Event.objects.all()
+            serializer = EventSerializer(queryset, many=True)
+            return Response(serializer.data)
+
+        queryset = Event.objects.filter(
+            Q(event_category=user_interests.interest_1) | Q(event_category=user_interests.interest_2) |
+            Q(event_category=user_interests.interest_3)
+        )
+
+        serializer = EventSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class EventRegisteredUserViewSet(viewsets.ModelViewSet):
@@ -130,7 +153,7 @@ class EventReviewViewSet(viewsets.ModelViewSet):
 class InterestsViewSet(viewsets.ModelViewSet):
     queryset = Interests.objects.all()
     serializer_class = InterestsSerializer
-    permission_classes = [IsCostumerUser]
+    permission_classes = [IsCustomerUser]
 
     def get_serializer_class(self):
         if self.action in ["create", "update", "partial_update"]:
