@@ -2,10 +2,12 @@ from django.contrib import admin
 
 from . import models
 
-#TabularInlines
+
+# TabularInlines
 class ProductReviewInLine(admin.TabularInline):
     model = models.ProductReview
     extra = 0
+
 
 class ProductInLine(admin.TabularInline):
     model = models.Product
@@ -22,6 +24,7 @@ class StoreAdmin(admin.ModelAdmin):
     list_filter = ("name",)
     ordering = ("name",)
 
+
 @admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -32,6 +35,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
     list_filter = ("name",)
     ordering = ("name",)
     inlines = [ProductInLine]
+
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -48,6 +52,7 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ("name",)
     inlines = [ProductReviewInLine]
 
+
 @admin.register(models.OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = (
@@ -58,6 +63,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ("product",)
     list_filter = ("product",)
     ordering = ("product",)
+
 
 @admin.register(models.Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -70,6 +76,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ("user",)
     ordering = ("user",)
 
+
 @admin.register(models.ProductReview)
 class ProductReviewAdmin(admin.ModelAdmin):
     list_display = (
@@ -80,6 +87,3 @@ class ProductReviewAdmin(admin.ModelAdmin):
     search_fields = ("user",)
     list_filter = ("user",)
     ordering = ("user",)
-
-
-
