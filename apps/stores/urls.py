@@ -1,11 +1,13 @@
+from typing import List
+
 from django.urls import include, path
-from rest_framework.routers import DefaultRouter
+from rest_framework import routers
 
 from .views import StoreViewSet
 
-router = DefaultRouter()
-router.register(r"user", StoreViewSet, "users")
+router = routers.DefaultRouter()
+router.register(r"stores", StoreViewSet, basename="store")
 
-urlpatterns = [
-    path("stores/", include(router.urls)),
+urlpatterns: List[str] = [
+    path("", include(router.urls)),
 ]
