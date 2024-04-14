@@ -40,7 +40,7 @@ DEFAULT_APPS: List[str] = [
 
 LOCAL_APPS: List[str] = [
     "events.apps.EventsConfig",
-    "apps.users",
+    "users.apps.UsersConfig",
 ]
 
 THIRD_PARTY_APPS: List[str] = [
@@ -81,7 +81,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
