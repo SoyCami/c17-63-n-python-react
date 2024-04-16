@@ -6,7 +6,6 @@ from django.db import models
 
 
 class Store(BaseModel):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
@@ -15,7 +14,6 @@ class Store(BaseModel):
 
 
 class ProductCategory(BaseModel):
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
@@ -24,7 +22,6 @@ class ProductCategory(BaseModel):
 
 
 class Product(BaseModel):
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
@@ -38,7 +35,6 @@ class Product(BaseModel):
 
 
 class OrderItem(BaseModel):
-    id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -48,7 +44,6 @@ class OrderItem(BaseModel):
 
 
 class Order(BaseModel):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
     order_items = models.ManyToManyField(OrderItem)
@@ -67,7 +62,6 @@ class ProductReview(BaseModel):
         (5, "5 - Excelente"),
     )
 
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(choices=RATING_CHOICES)
