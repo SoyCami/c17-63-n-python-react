@@ -1,6 +1,6 @@
 import {  ReactElement } from 'react';
 import { type BtnM } from './Btn.model';
-import classNames from './Btn.module.css'
+import classNames from './Btn.module.css';
 
 export const Btn = ({
     onClick,
