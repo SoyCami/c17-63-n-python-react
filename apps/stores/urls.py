@@ -6,7 +6,7 @@ from rest_framework import routers
 from .views import StoreViewSet
 
 router = routers.DefaultRouter()
-router.register(r"stores", StoreViewSet, basename="store")
+router.register(r"store", StoreViewSet, basename="store")
 
 urlpatterns: List[str] = [
     path("", include(router.urls)),

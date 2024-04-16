@@ -1,10 +1,11 @@
+from base.models import BaseModel
 from django.conf import settings
 from django.db import models
 
 # Create your models here.
 
 
-class Store(models.Model):
+class Store(BaseModel):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
@@ -13,7 +14,7 @@ class Store(models.Model):
         return self.name
 
 
-class ProductCategory(models.Model):
+class ProductCategory(BaseModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
@@ -22,7 +23,7 @@ class ProductCategory(models.Model):
         return self.name
 
 
-class Product(models.Model):
+class Product(BaseModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
@@ -36,7 +37,7 @@ class Product(models.Model):
         return self.name
 
 
-class OrderItem(models.Model):
+class OrderItem(BaseModel):
     id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -46,7 +47,7 @@ class OrderItem(models.Model):
         return f"{self.product.name} - {self.quantity}"
 
 
-class Order(models.Model):
+class Order(BaseModel):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
@@ -57,7 +58,7 @@ class Order(models.Model):
         return f"{self.user} - {self.total_price}"
 
 
-class ProductReview(models.Model):
+class ProductReview(BaseModel):
     RATING_CHOICES = (
         (1, "1 - Muy malo"),
         (2, "2 - Malo"),
