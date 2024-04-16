@@ -3,10 +3,10 @@ import sys
 from pathlib import Path
 from typing import List
 
-from django.apps import AppConfig
+# from django.apps import AppConfig
 from dotenv import load_dotenv
 
-AppConfig.default = False
+# AppConfig.default = False
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +41,7 @@ DEFAULT_APPS: List[str] = [
 LOCAL_APPS: List[str] = [
     "events.apps.EventsConfig",
     "users.apps.UsersConfig",
+    "stores.apps.StoresConfig",
 ]
 
 THIRD_PARTY_APPS: List[str] = [

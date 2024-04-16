@@ -71,4 +71,5 @@ And finally, run service with:
 ## Authors
 
 - [@renanferls](https://www.github.com/renanferls/)
+- [@JhonOlivares26](https://github.com/JhonOlivares26/)
 - Devs pending for their usernames
