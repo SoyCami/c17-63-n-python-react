@@ -10,8 +10,15 @@ from rest_framework.response import Response
 from .models import Event, EventCategory, EventRegisteredUser, EventReview, Interests
 from .permissions import IsCustomerUser, IsOrganizerUser
 from .serializers import (
-    EventCategorySerializer, EventRegisteredUserSerializer, EventRegisteredUserWriteSerializer, EventReviewSerializer,
-    EventReviewWriteSerializer, EventSerializer, EventWriteSerializer, InterestsSerializer, InterestsWriteSerializer,
+    EventCategorySerializer,
+    EventRegisteredUserSerializer,
+    EventRegisteredUserWriteSerializer,
+    EventReviewSerializer,
+    EventReviewWriteSerializer,
+    EventSerializer,
+    EventWriteSerializer,
+    InterestsSerializer,
+    InterestsWriteSerializer,
 )
 
 
@@ -80,9 +87,8 @@ class EventViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
 
         queryset = Event.objects.filter(
-            Q(event_category=user_interests.interest_1)
-            | Q(event_category=user_interests.interest_2)
-            | Q(event_category=user_interests.interest_3)
+            Q(event_category=user_interests.interest_1) | Q(event_category=user_interests.interest_2) |
+            Q(event_category=user_interests.interest_3)
         )
 
         serializer = EventSerializer(queryset, many=True)
