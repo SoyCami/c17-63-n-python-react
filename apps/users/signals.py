@@ -9,5 +9,5 @@ def create_user_groups(sender, **kwargs):
         Group.objects.get_or_create(name="Customer")
         Group.objects.get_or_create(name="Seller")
         Group.objects.get_or_create(name="Organizer")
-    except:
+    except BaseException:
         pass

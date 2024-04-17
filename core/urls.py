@@ -13,13 +13,11 @@ urlpatterns: List[str] = [
     path("api/docs/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path(
         "api/v1/",
-        include(
-            [
-                path("users/", include(("users.urls", "users"))),
-                path("events/", include(("events.urls", "events"))),
-                path("stores/", include(("stores.urls", "stores"))),
-            ]
-        ),
+        include([
+            path("users/", include(("users.urls", "users"))),
+            path("events/", include(("events.urls", "events"))),
+            path("stores/", include(("stores.urls", "stores"))),
+        ]),
     ),
 ]
 
