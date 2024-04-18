@@ -46,6 +46,7 @@ LOCAL_APPS: List[str] = [
 
 THIRD_PARTY_APPS: List[str] = [
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
 ]
@@ -144,6 +145,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.TokenAuthentication"],
 }
 
 SPECTACULAR_SETTINGS = {

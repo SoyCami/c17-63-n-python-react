@@ -9,3 +9,4 @@ from .serializers import StoreSerializer
 # Create your views here.
 class StoreViewSet(viewsets.ModelViewSet):
     serializer_class = StoreSerializer
+    queryset = Store.objects.all()
