@@ -1,0 +1,13 @@
+.form-container {
+    width: 300px; /* Ajusta el ancho del contenedor del formulario según tu preferencia */
+    margin: auto; /* Centra horizontalmente el contenedor */
+  }
+  
+  .input-container {
+    width: 100%; /* Ajusta el ancho de los campos de entrada */
+  }
+  
+  .submit-button {
+    width: 100%; /* Ajusta el ancho del botón de envío */
+  }
+  
