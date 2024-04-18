@@ -1,0 +1,118 @@
+.field-box {
+	--font-style: normal;
+	--font-weight: 300;
+	--height: 2.8rem;
+	--padding: 0 1rem;
+	--margin: 0;
+	--bg: transparent;
+	--border-top: 0.1rem solid;
+	--border-bottom: 0.1rem solid;
+	--border-left: 0.1rem solid;
+	--border-right: 0.1rem solid;
+	--radius: 1rem;
+	--shadow: none;
+	cursor: text;
+  }
+  
+  .field-box:hover {
+	--h-bg: transparent;
+	--h-border-color: #b9bbbb;
+  }
+  
+  .field-box:focus-within {
+	--f-bg: transparent;
+	--f-border-color: rgb(2, 199, 110);
+  }
+  
+  .field-box.disabled {
+	--d-bg: #f7f7f7;
+	--d-border-color: #f7f7f7;
+	pointer-events: none;
+  }
+  
+  .field-box.fixed-value {
+	pointer-events: none;
+  }
+  
+  .input-field-box {
+	height: 8px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+  }
+  
+  .input-field {
+	color: #000;
+	text-overflow: ellipsis;
+	outline: none;
+	width: 100%;
+	border: none;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+  }
+  
+  .field-box:hover .input-field {
+	--h-color-input: #656868;
+  }
+  
+  .input-field:focus {
+	--f-color-input: #656868;
+  }
+  
+  .input-field::placeholder {
+	--ph-color-input: #b9bbbb;
+	opacity: 0;
+	transition: 0.4s;
+  }
+  
+  .input-field:focus::placeholder {
+	opacity: 1;
+  }
+  
+  .input-field:disabled {
+	--d-color-input: #656868;
+  }
+  
+  .label-field-box {
+	--font-size-label: 1rem;
+	cursor: text;
+  }
+  
+  .label-field {
+	--color-label: rgb(2, 199, 110);
+	--font-weight: 300;
+	transition: 0.2s;
+	position: absolute;
+	top: 0;
+  }
+  
+  .field-box:hover .label-field {
+	--h-color-label: rgb(2, 199, 110);
+  }
+  
+  .field-content:focus-within > .label-field-box > .label-field {
+	--f-color-label: rgb(2, 199, 110);
+  }
+  
+  .field-content:not(:focus-within) > .label-field-box > .label-field.center-label {
+	--center-color-label: rgb(2, 199, 110);
+	top: 50%;
+	transform: translateY(-50%);
+  }
+  
+  .label-field.disabled {
+	--d-color-label: rgb(2, 199, 110);
+  }
+  
+  .label-hidden {
+	visibility: hidden;
+  }
+  
+  .iconEye {
+	border-radius: 50%;
+	padding: 0.6rem;
+	display:
+  }  

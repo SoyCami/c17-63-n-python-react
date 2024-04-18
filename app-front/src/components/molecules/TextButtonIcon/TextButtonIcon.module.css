@@ -1,0 +1,16 @@
+.TextButtonIcon {
+	display: flex;
+	align-items: center;
+	gap: var(--gap, 0.5rem);
+	justify-content: var(--justifyTextBtn, flex-end);
+	background: none;
+	border: none;
+}
+
+.buttonText {
+	font-size: var(--font-size, 1rem);
+	justify-content: var(--justifyTextBtn, flex-end);
+	font-style: var(--font-style, normal);
+	font-weight: var(--font-weight, 700);
+	color: var(--color, #5375a4);
+}
