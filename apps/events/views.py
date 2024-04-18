@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.response import Response
 
 from .models import Event, EventCategory, EventRegisteredUser, EventReview, Interests
-from .permissions import IsCustomerUser, IsOrganizerUser
+from ..base.permissions import IsCustomerUser, IsOrganizerUser
 from .serializers import (
     EventCategorySerializer,
     EventRegisteredUserSerializer,
