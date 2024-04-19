@@ -1,0 +1,20 @@
+.btn {
+	@apply leading-normal;
+	@apply font-light;
+	@apply italic;
+	@apply text-base;
+	@apply text-white;
+	@apply no-underline;
+	@apply inline-flex;
+	@apply justify-center;
+	@apply items-center;
+	@apply w-80;
+	@apply h-10;
+	@apply px-4;
+	@apply py-2;
+	@apply m-3;
+	@apply bg-green-500;
+	@apply border-none;
+	@apply rounded-lg;
+  }
+  
