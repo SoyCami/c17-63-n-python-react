@@ -1,0 +1,144 @@
+.field-box {
+	font-style: var(--font-style, normal);
+	font-weight: var(--font-weight, 300);
+	line-height: normal;
+
+	width: var(--width, 100%);
+	height: var(--height);
+	padding: var(--padding, 0.8rem 1.2rem);
+	margin: var(--margin, 0);
+	background-color: var(--bg, transparent);
+	border-top: var(--border-top, 0.1rem solid);
+	border-bottom: var(--border-bottom, 0.1rem solid);
+	border-left: var(--border-left, 0.1rem solid);
+	border-right: var(--border-right, 0.1rem solid);
+	border-color: var(--border-color, var(--color-T1-400, #b9bbbb));
+	border-radius: var(--radius, 1rem);
+	box-shadow: var(--shadow);
+	cursor: text;
+}
+
+.field-box:hover {
+	background-color: var(--h-bg, transparent);
+	border-color: var(--h-border-color, var(--color-T1-400, #b9bbbb));
+}
+
+.field-box:focus-within {
+	background-color: var(--f-bg, transparent);
+	border-color: var(--f-border-color, var(--color-T01-600, #63b500));
+}
+
+.field-box {
+	&.disabled {
+		background-color: var(--d-bg, var(--color-T1-050, #f7f7f7));
+		border-color: var(--d-border-color, var(--color-T1-050, #f7f7f7));
+		pointer-events: none;
+	}
+}
+
+.field-box.fixed-value {
+	pointer-events: none;
+}
+
+.field-content {
+	display: flex;
+	flex-direction: column-reverse;
+	position: relative;
+}
+
+/* input properties */
+.input-field-box {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.input-field {
+	font-size: var(--font-size-input, 1.8rem);
+	color: var(--color-input, var(--color-T1-800, #656868));
+	text-overflow: ellipsis;
+
+	outline: none;
+	width: 100%;
+	border: none;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+}
+
+.field-box:hover .input-field {
+	color: var(--h-color-input, var(--color-T1-800, #656868));
+}
+
+.input-field:focus {
+	color: var(--f-color-input, var(--color-T1-800, #656868));
+}
+
+.input-field::placeholder {
+	color: var(--ph-color-input, var(--color-T1-400, #b9bbbb));
+
+	opacity: 0;
+	transition: 0.4s;
+}
+
+.input-field:focus::placeholder {
+	opacity: 1;
+}
+
+.input-field:disabled {
+	color: var(--d-color-input, var(--color-T1-800, #656868));
+}
+
+/* label properties */
+.label-field-box {
+	font-size: var(--font-size-label, 1.4rem);
+
+	cursor: text;
+}
+
+.label-field {
+	color: var(--color-label, var(--color-T01-600, #63b500));
+	font-weight: var(--font-weight, 300);
+
+	transition: 0.2s;
+	position: absolute;
+	top: 0;
+}
+
+.field-box:hover .label-field {
+	color: var(--h-color-label, var(--color-T01-600, #63b500));
+}
+
+.field-content:focus-within > .label-field-box > .label-field {
+	color: var(--f-color-label, var(--color-T01-600, #63b500));
+}
+
+.field-content:not(:focus-within) > .label-field-box > .label-field {
+	&.center-label {
+		font-size: var(--font-size-input, 1.8rem);
+		color: var(--center-color-label, var(--color-T1-400, #b9bbbb));
+
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.label-field.disabled {
+	color: var(--d-color-label, var(--color-T01-600, #63b500));
+}
+
+.label-hidden {
+	visibility: hidden;
+}
+
+.iconEye {
+	border-radius: 50%;
+	padding: 0.6rem;
+	background-color: var(--color-S01-800, #007934);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
