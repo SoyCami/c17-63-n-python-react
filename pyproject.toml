@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "core"
+version = "0.1.0"
+description = ""
+authors = ["Ferdinand <renanfer14.ls@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10 || ^3.11"
+django = "^5.0.4"
+python-dotenv = "^1.0.1"
+djangorestframework = "^3.15.1"
+django-cors-headers = "^4.3.1"
+drf-spectacular = "^0.27.2"
+psycopg2-binary = "^2.9.9"
+pillow = "^10.3.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+isort = "^5.13.2"
+black = "^24.3.0"
+
+[tool.yapf]
+align_closing_bracket_with_visual_indent = true
+based_on_style = "google"
+coalesce_brackets = true
+column_limit = 119
+dedent_closing_brackets = true
+
+[tool.isort]
+multi_line_output = 5
+atomic = true
+line_length = 119
+profile = "black"
+skip_glob = ['*/migrations/*']
+skip_gitignore = true
+
+[tool.black]
+preview = true
+line_length = 119
+target-version = ['py310', 'py311']
+exclude = """
+/(\\.git/
+  |__pycache__
+  |\\.venv
+  |migrations
+)/
+"""
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
