@@ -1,6 +1,7 @@
-import React, { ReactElement, cloneElement } from 'react';
+import {  ReactElement } from 'react';
+import { type BtnM } from './Btn.model';
 import classNames from './Btn.module.css';
-import { BtnM } from './Btn.model';
+
 
 export const Btn = ({
   children,
