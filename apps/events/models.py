@@ -10,6 +10,7 @@ from django.utils import timezone
 class EventCategory(BaseModel):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to="event_categories/", blank=True, null=True)
 
     def __str__(self):
         return self.name
