@@ -1,3 +1,4 @@
+from django.db import transaction
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import OpenApiParameter, extend_schema
 from rest_framework import status, viewsets
@@ -7,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from .models import User
 from .serializers import LoginUserSerializer, RecoverPasswordSerializer, UpdateProfileSerializer, UserSerializer
+from base.permissions import IsCustomerUser
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -106,3 +108,15 @@ class UserViewSet(viewsets.ModelViewSet):
         if user:
             return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @action(
+        methods=["POST"], detail=False, permission_classes=[IsAuthenticated], authentication_classes=[IsCustomerUser]
+    )
+    def upgrade_profile(self, request):
+        with transaction.atomic():
+            user = User.objects.get(id=request.data["id"])
+            user_type = request.data["user_type"]
+            user.user_type = str(user_type)
+            user.save()
+            # Add logic gor
+            return Response(status=status.HTTP_204_NO_CONTENT)

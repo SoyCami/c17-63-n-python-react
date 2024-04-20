@@ -8,10 +8,13 @@ from .utils.gen_words import generate_random_username
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False)
+    has_selected_categories = serializers.BooleanField(read_only=True, required=False)
 
     class Meta:
         model = User
-        fields = ["id", "email", "name", "last_name", "phone", "password", "user_type", "username"]
+        fields = [
+            "id", "email", "name", "last_name", "phone", "password", "user_type", "username", "has_selected_categories"
+        ]
         extra_kwargs = {"password": {"write_only": True}, "user_type": {"read_only": True}}
 
     def create(self, validated_data):
@@ -48,7 +51,7 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "name", "last_name", "phone"]
+        fields = "__all__"
 
 
 class LoginUserSerializer(serializers.ModelSerializer):
