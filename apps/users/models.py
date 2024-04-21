@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField("Gender", max_length=10, choices=GENDER_CHOICES, null=True)
     occupation = models.CharField("Occupation", max_length=64, null=True)
     bio = models.TextField("Bio", null=True)
-    event_picture = models.ImageField(upload_to="profiles/")
+    picture = models.ImageField(upload_to="profiles/", null=True)
     has_selected_categories = models.BooleanField(default=False)
 
     # Location information

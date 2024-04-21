@@ -1,3 +1,4 @@
+from base.permissions import IsCustomerUser, IsOrganizerUser
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from rest_framework import viewsets
@@ -7,7 +8,6 @@ from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
-from base.permissions import IsCustomerUser, IsOrganizerUser
 from .models import Event, EventCategory, EventRegisteredUser, EventReview, Interests
 from .serializers import (
     EventCategorySerializer,
