@@ -1,0 +1,10 @@
+
+.image{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.checked{
+    border: 12px solid black;
+}
