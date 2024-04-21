@@ -1,12 +1,21 @@
+from base.permissions import IsCustomerUser
+from django.db import transaction
 from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import OpenApiParameter, extend_schema
+from drf_spectacular.utils import OpenApiExample, OpenApiParameter, extend_schema
 from rest_framework import status, viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
+
 from .models import User
-from .serializers import LoginUserSerializer, RecoverPasswordSerializer, UpdateProfileSerializer, UserSerializer
+from .serializers import (
+    LoginUserSerializer,
+    RecoverPasswordSerializer,
+    UpdateProfileSerializer,
+    UpgradeProfileSerializer,
+    UserSerializer,
+)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -54,7 +63,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @extend_schema(
         description="Endpoint para recuperar la contraseña de un usuario",
         request=RecoverPasswordSerializer,
-        responses={204: None}
+        responses={204: None},
     )
     @action(methods=["POST"], detail=False)
     def recover_password(self, request):
@@ -82,7 +91,7 @@ class UserViewSet(viewsets.ModelViewSet):
         parameters=[
             OpenApiParameter("email", OpenApiTypes.EMAIL, OpenApiParameter.QUERY),
         ],
-        responses={200 | 401: None}
+        responses={200 | 401: None},
     )
     @action(methods=["GET"], detail=False)
     def query_email(self, request):
@@ -97,7 +106,7 @@ class UserViewSet(viewsets.ModelViewSet):
         parameters=[
             OpenApiParameter("username", OpenApiTypes.STR, OpenApiParameter.QUERY),
         ],
-        responses={200 | 401: None}
+        responses={200 | 401: None},
     )
     @action(methods=["GET"], detail=False)
     def query_username(self, request):
@@ -106,3 +115,21 @@ class UserViewSet(viewsets.ModelViewSet):
         if user:
             return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @extend_schema(
+        description="Endpoint para actualizar el tipo de usuario",
+        request=UpgradeProfileSerializer,
+        responses={200: {}},
+    )
+    @action(methods=["POST"], detail=False, permission_classes=[IsAuthenticated])
+    def upgrade_profile(self, request):
+        with transaction.atomic():
+            user = User.objects.get(id=request.data["id"])
+            user_type = request.data["user_type"]
+            user.user_type = str(user_type)
+            user.save()
+            # Add specific logic to update profile for seller or organizer user
+            return Response(
+                {"message": f"User {user.username} has been updated to {user_type} user type"},
+                status=status.HTTP_200_OK,
+            )

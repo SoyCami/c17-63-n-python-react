@@ -2,16 +2,27 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from rest_framework import serializers
 
-from .models import User
+from .models import USER_TYPE, User
 from .utils.gen_words import generate_random_username
 
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False)
+    has_selected_categories = serializers.BooleanField(read_only=True, required=False)
 
     class Meta:
         model = User
-        fields = ["id", "email", "name", "last_name", "phone", "password", "user_type", "username"]
+        fields = [
+            "id",
+            "email",
+            "name",
+            "last_name",
+            "phone",
+            "password",
+            "user_type",
+            "username",
+            "has_selected_categories",
+        ]
         extra_kwargs = {"password": {"write_only": True}, "user_type": {"read_only": True}}
 
     def create(self, validated_data):
@@ -48,7 +59,14 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "name", "last_name", "phone"]
+        exclude = [
+            "password",
+            "email",
+            "username",
+            "groups",
+            "user_permissions",
+            "ip_location",
+        ]
 
 
 class LoginUserSerializer(serializers.ModelSerializer):
@@ -83,3 +101,12 @@ class LoginUserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["id", "email", "name", "last_name", "phone", "password", "user_type", "username"]
         extra_kwargs = {"id": {"read_only": True}}
+
+
+class UpgradeProfileSerializer(serializers.ModelSerializer):
+    user_type = serializers.ChoiceField(write_only=True, choices=USER_TYPE)
+
+    class Meta:
+        model = User
+        fields = ["id", "user_type"]
+        extra_kwargs = {"id": {"write_only": True}}
