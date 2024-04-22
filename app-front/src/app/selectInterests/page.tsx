@@ -64,32 +64,34 @@ const selectInterests: React.FC = () => {
               <form
                 id="interestsForm"
                 onSubmit={handleSubmit}
-                className="flex flex-wrap flex-row -mx-4 text-center"
-                >{eventCategories &&
-                  eventCategories.map((category) => (
-                    <div key={category.id} className="interest flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                      <div className="py-8 px-12 mb-12">
-                        <label htmlFor={`checkbox-${category.id}`} className={`${interestsSelected.includes(category.id) ? styles.selected : ''}`}>
-                          <input
-                            type="checkbox"
-                            name="interest[]"
-                            value={category.id}
-                            onChange={handleCheckboxChange}
-                            className={`checkbox ${styles.input} ${interestsSelected.includes(category.id) ? styles.checked : ''}`}
-                            id={`checkbox-${category.id}`} 
-                            onClick={() => document.getElementById(`checkbox-${category.id}`)?.click()}
-                          />
-                          <img
-                            src={category.image}
-                            alt={category.name}
-                            className={`${interestsSelected.includes(category.id) ? 'selected' : ''} ${styles.image}`} 
-                          />
-                        </label>
-                        <label className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">{category.name}</label>
+                >
+                  <div className="flex flex-wrap flex-row -mx-4 text-center">
+                    {eventCategories &&
+                      eventCategories.map((category) => (
+                      <div key={category.id} className="interest flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                        <div className="py-8 px-12 mb-12">
+                          <label htmlFor={`checkbox-${category.id}`} className={`${styles.label} ${interestsSelected.includes(category.id) ? styles.selected : ''}`}>
+                            <input
+                              type="checkbox"
+                              name="interest[]"
+                              value={category.id}
+                              onChange={handleCheckboxChange}
+                              className={`hidden ${styles.checkbox}`}
+                              id={`checkbox-${category.id}`} 
+                              onClick={() => document.getElementById(`checkbox-${category.id}`)?.click()}
+                            />
+                            <img
+                              src={category.image}
+                              alt={category.name}
+                              className={`${styles.image}`} 
+                            />
+                          </label>
+                          <label className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">{category.name}</label>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                <button type="submit">Guardar</button>
+                    ))}
+                  </div>
+                <button type="submit" className={`${styles.button} px-3 py-2 mb-4 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-white text-black hover:bg-black hover:text-white`} >Guardar</button>
               </form>
             </div>
           </div>
