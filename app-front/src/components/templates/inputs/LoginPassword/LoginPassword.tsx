@@ -9,12 +9,14 @@ export default function LoginPassword(): ReactElement {
   };
 
   const validatePassword = async (passwordValue: string) => {
-    // Replace with your actual backend API call or logic
-    const response = await fetch('/api/login', {
+   
+    const response = await fetch('https://3570-38-56-113-35.ngrok-free.app/api/v1/users/user/login/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: passwordValue }),
+      body: JSON.stringify ({ email: 'new@new.com', password: 'new'})
     });
+
+    console.log("🚀 ~ validatePassword ~ response:", await response.json());
 
     if (!response.ok) {
       setError('Contraseña incorrecta'); // Set error message
@@ -29,7 +31,7 @@ export default function LoginPassword(): ReactElement {
     event.preventDefault(); // Prevent default form submission
 
     if (await validatePassword(password)) {
-      // Handle successful login (e.g., navigate to another page)
+
       console.log('Login successful!');
     }
   };
@@ -44,12 +46,13 @@ export default function LoginPassword(): ReactElement {
           value={password}
           onChange={handlePasswordChange}
           className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal text-black"
-          placeholder="Ingrese su contraseña"
+          placeholder="Ingresa tu contraseña"
           required
         />
         <div className="text-red-500 mt-2">{error}</div>
       </div>
       <button
+        onClick={() => validatePassword(password)}
         type="submit"
         className="flex items-center justify-center mx-auto mt-4 px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white w-700"
       >
