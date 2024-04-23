@@ -1,0 +1,13 @@
+.image{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: rgb(194, 194, 194);
+}
+.checkbox:checked ~ .image {
+    border: 3px solid #23cb93; 
+}
+.button{
+    width: 240px;
+}   
