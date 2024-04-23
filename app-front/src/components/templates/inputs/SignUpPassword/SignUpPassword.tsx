@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import SignUpPage from '../../../../app/signUp/page';
+import SignUpPage from '../../../../app/register/page';
 
 export default function SignUpPassword(): ReactElement {
   const [password, setPassword] = useState('');
@@ -8,7 +8,7 @@ export default function SignUpPassword(): ReactElement {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
     const isValid = validatePassword(event.target.value);
-    setError(isValid ? '' : 'Ingrese una contraseña válida');
+    setError(isValid ? '' : 'La contraseña debe tener mínimo 8 caracteres.');
   };
 
   const validatePassword = (passwordValue: string) => {
@@ -18,16 +18,16 @@ export default function SignUpPassword(): ReactElement {
   };
   return (
     <div className="flex flex-col">
-      <label htmlFor="password" className="mb-2">Contraseña:</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={handlePasswordChange}
-        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal text-black"
-        placeholder="Ingrese su contraseña"
-        required
-      />
+    <p className="text-sm text-gray-500 mb-2">La contraseña debe tener al menos: 8 caracteres, una letra mayúscula, una letra minúscula, un número y un caracter especial.</p>
+    <input
+      type="password"
+      id="password"
+      value={password}
+      onChange={handlePasswordChange}
+      className="flex px-3 py-2.5 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal text-black"
+      placeholder="Ingresa tu contraseña"
+      required
+    />
       <div className="text-red-500 mt-2">{error}</div>
     </div>
   );
