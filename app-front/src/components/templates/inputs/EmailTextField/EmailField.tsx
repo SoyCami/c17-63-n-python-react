@@ -17,7 +17,7 @@ export default function EmailField (): ReactElement {
 
   return (
     <div className="flex flex-col">
-      <label htmlFor="email" className="mb-2">Correo electrónico:</label>
+      <label htmlFor="email" className="mb-2 text-black font-medium">Correo electrónico:</label>
       <input
         type="email"
         id="email"
