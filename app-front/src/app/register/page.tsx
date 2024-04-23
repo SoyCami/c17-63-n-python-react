@@ -1,10 +1,11 @@
 'use client';
 
 import React, { FormEvent, ReactElement, useEffect, useState } from 'react';
-import { Btn } from '@/components/atoms/Btn/Btn';
 import { postRegisterUser } from '@/api/postRegisterUser';
 import EmailField from '@/components/templates/inputs/EmailTextField/EmailField';
 import SignUpPassword from '@/components/templates/inputs/SignUpPassword/SignUpPassword';
+import SelectCountryMR from '@/components/molecules/SelectCountry/SelectCountry';
+import SelectCountry from '@/components/molecules/SelectCountry/SelectCountry';
 
 export default function SignUpPage(): ReactElement {
     const [requirements, setRequeriments] = useState(false);
@@ -119,8 +120,10 @@ export default function SignUpPage(): ReactElement {
                         <EmailField
                         />
                         <SignUpPassword />
+                        <SelectCountry name={''} id={''}  />
                                         <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">Crear cuenta</button>
-
+                        
+                       
                     </div>
                 </form>
             </div>

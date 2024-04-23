@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { fetchEventCategories, saveUserInterests } from '@/api/userInterests';
 import styles from './page.module.css';
+import Image from 'next/image';
 
-const selectInterests: React.FC = () => {
+export default function SelectInterests(): ReactElement {
   const [eventCategories, setEventCategories] = useState<any[]>([]);
   const [interestsSelected, setInterestsSelected] = useState<string[]>([]);
 
@@ -80,7 +81,7 @@ const selectInterests: React.FC = () => {
                               id={`checkbox-${category.id}`} 
                               onClick={() => document.getElementById(`checkbox-${category.id}`)?.click()}
                             />
-                            <img
+                            <Image
                               src={category.image}
                               alt={category.name}
                               className={`${styles.image}`} 
@@ -101,4 +102,3 @@ const selectInterests: React.FC = () => {
   );
 };
 
-export default selectInterests;

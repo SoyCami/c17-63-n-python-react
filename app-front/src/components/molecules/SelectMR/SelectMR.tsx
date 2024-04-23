@@ -1,7 +1,5 @@
 'use client';
 
-
-
 import { IconClose } from '@/components/svgs/IconClose';
 import { type SelectMRM, type SelectOptionM } from './SelectMR.model';
 import styles from './SelectMR.module.css';
