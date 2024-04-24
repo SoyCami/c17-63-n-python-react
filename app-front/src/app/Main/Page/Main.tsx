@@ -3,6 +3,25 @@ export default function Main(){
     return(
         <div>
             <header className="min-h-screen bg-white ">
+
+                <div className="md:flex flex-row items-center pl-16">
+                    <div className="md:flex-col items-center pl-16 ">
+                        <h3 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A] ">
+                            La plataforme que une a las personas y crea comunicades</h3>
+                        <h4 className="py-8 px-3 lg:text-3xl font-light text-[#143C3A] ">
+                            Explora y discubre eventos con tus gustos e intereses, conoce personas
+                            y comparte experiencias</h4>
+                        <div
+                            className="flex py-3 px-6 w-1/5 items-center justify-center text-white rounded-lg bg-[#143C3A] transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                            <button>Unirse a FindUs</button>
+                        </div>
+                    </div>
+                    <img
+                        className=" w-100 object-cover transition-transform duration-300 transform group-hover:scale-105"
+                        src="https://img.freepik.com/vector-premium/diseno-plano-juventud-dia-gente-abrazando_23-2148600298.jpg"
+                        alt=""/>
+                </div>
+
                 <div className="md:flex space-x-16 flex-col ">
                     <div className="md:flex items-center pl-16 ">
                         <h1 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A] ">Nuestras eventos
@@ -260,7 +279,8 @@ export default function Main(){
 
                 <div className="md:flex space-x-16  ">
                     <div className="md:flex items-center pl-16 ">
-                        <h1 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A] ">Nuestras categorias principales</h1>
+                        <h1 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A] ">Nuestras categorias
+                            principales</h1>
                     </div>
                 </div>
 
@@ -279,7 +299,8 @@ export default function Main(){
                                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
                                         </svg>
                                     </div>
-                                    <h3 className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">Actividades sociales</h3>
+                                    <h3 className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">Actividades
+                                        sociales</h3>
                                 </div>
 
                             </div>
@@ -315,7 +336,8 @@ export default function Main(){
                                                 d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"></path>
                                         </svg>
                                     </div>
-                                    <h3 className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">Apoyo y coaching</h3>
+                                    <h3 className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">Apoyo y
+                                        coaching</h3>
                                 </div>
 
                             </div>
@@ -374,6 +396,25 @@ export default function Main(){
 
                         </div>
                     </div>
+                </div>
+
+                <div className="md:flex justify-center">
+                <div className="md:flex flex-row rounded-lg  items-center w-4/5 bg-[#CDE7E6]">
+                    <div className="md:flex-col items-center pl-16 ">
+                        <h3 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A] ">
+                            Únete a FindUs</h3>
+                        <h4 className="py-8 px-3 lg:text-3xl font-light text-[#143C3A] ">
+                            Descubre una comunidad donde puedas compartir y encontrar nuevas experiencias.</h4>
+                        <div
+                            className="flex py-3 px-6 w-1/3 items-center justify-center text-white rounded-lg bg-[#143C3A] transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                            <button>Registrate</button>
+                        </div>
+                    </div>
+                    <img
+                        className="w-100 object-cover transition-transform duration-300 transform group-hover:scale-105"
+                        src="https://i.pinimg.com/originals/5c/69/d7/5c69d7b70bd9dc491421a89a7712e364.jpg"
+                        alt=""/>
+                </div>
                 </div>
             </header>
         </div>
