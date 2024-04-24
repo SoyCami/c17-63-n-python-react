@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from 'react';
-import SignUpPage from '../../../../app/register/page';
 
 export default function SignUpPassword(): ReactElement {
   const [password, setPassword] = useState('');
