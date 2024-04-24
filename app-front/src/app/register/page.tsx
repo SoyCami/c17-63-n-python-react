@@ -10,7 +10,7 @@ import Phone from '@/components/templates/inputs/PhoneField/PhoneField';
 import NameField from '@/components/inputs/NameField/NameField';
 // import LastNameField from '@/components/inputs/LastNameField/LastNameField';
 
-export default function SignUpPage(): ReactElement {
+export default function RegisterPage(): ReactElement {
     const [requirements, setRequeriments] = useState(false);
     const [email, setEmail] = useState('');
     const [emailConfirm, setEmailConfirm] = useState('');
