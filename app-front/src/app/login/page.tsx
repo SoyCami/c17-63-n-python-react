@@ -15,12 +15,12 @@ export default function LoginPage() {
           <div className='hidden lg:flex flex-col justify-between bg-[#143C3A] lg:p-8 xl:p-12 lg:max-w-sm xl:max-w-lg'>
             <div className="flex items-center justify-start space-x-3">
               <span className="bg-black rounded-full w-8 h-8"></span>
-              <a href={'signUp'} className="font-medium text-xl">FindUs</a>
+              <a href={'register'} className="font-medium text-xl">FindUs</a>
             </div>
             <div className='space-y-5'>
               <h1 className="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">Entra en tu cuenta y descubre nuevas conexiones</h1>
               <p className="text-lg">¿No tienes una cuenta?</p>
-              <a href={'signUp'}>
+              <a href={'register'}>
               <button  className="inline-block flex-none px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white">Crea una cuenta aquí
               </button>
               </a>
@@ -37,7 +37,7 @@ export default function LoginPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <span>¿Aún no eres miembro?</span>
-                <a href={'signUp'} className="underline font-medium text-[#070eff]">¡Crea una cuenta aquí!</a>
+                <a href={'register'} className="underline font-medium text-[#070eff]">¡Crea una cuenta aquí!</a>
               </div>
             </div>
             {/* Login box */}
