@@ -4,7 +4,7 @@ export default function Header(){
     return(
         <div>
             <nav className="flex items-center py-8 px-20 justify-between bg-[#1D5A58]">
-                <div className="flex items-center">
+                <div className="flex items-center gap-10">
                     <a href="#">
                         <span className="bg-black rounded-full w-8 h-8"></span>
                         <a href="#" className="font-medium text-xl">FindUs</a>
@@ -18,21 +18,23 @@ export default function Header(){
                 </div>
 
 
+                <div className="lg:flex flex-row gap-10">
                 <div
-                    className="lg:flex hidden items-center space-x-3 py-3 px-6 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                    className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">
                     <button>Inicio</button>
                 </div>
                 <div
-                    className="lg:flex hidden items-center space-x-3 py-3 px-6 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                    className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">
                     <button>Eventos Top</button>
                 </div>
                 <div
-                    className="lg:flex hidden items-center space-x-3 py-3 px-6 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                    className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">
                     <button>Grupos</button>
                 </div>
                 <div
-                    className="lg:flex hidden items-center space-x-3 py-3 px-10 text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
+                    className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">
                     <button>Crear evento</button>
+                </div>
                 </div>
             </nav>
         </div>
