@@ -121,7 +121,7 @@ class UserViewSet(viewsets.ModelViewSet):
         request=UpgradeProfileSerializer,
         responses={200: {}},
     )
-    @action(methods=["POST"], detail=False, permission_classes=[IsAuthenticated])
+    @action(methods=["POST"], detail=False, permission_classes=[IsAuthenticated, IsCustomerUser])
     def upgrade_profile(self, request):
         with transaction.atomic():
             user = User.objects.get(id=request.data["id"])

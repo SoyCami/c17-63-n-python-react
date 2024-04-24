@@ -105,8 +105,8 @@ class LoginUserSerializer(serializers.ModelSerializer):
 
 class UpgradeProfileSerializer(serializers.ModelSerializer):
     user_type = serializers.ChoiceField(write_only=True, choices=USER_TYPE)
+    user_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = User
-        fields = ["id", "user_type"]
-        extra_kwargs = {"id": {"write_only": True}}
+        fields = ["user_id", "user_type"]
