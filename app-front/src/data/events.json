@@ -1,0 +1,86 @@
+{
+    "events_for_you": [
+        {
+            "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVumWgDx7_wRxavBmL7YwsamagRZyDCUdW8VHoIE56Q&s",
+            "title": "Introducción a la Nube",
+            "date": "09 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://i0.wp.com/blog.webtraining.zone/wp-content/uploads/2018/01/curso-profesional-vue.jpg?resize=825%2C510&ssl=1",
+            "title": "Taller VueJs",
+            "date": "10 de Abril, 18:00 (GMT -5)",
+            "location": "Calle Las Flores, San Isidro, Perú"
+        },
+        {
+            "imgSrc": "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp",
+            "title": "Meditación desde casa",
+            "date": "20 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://asispa.org/wp-content/uploads/2023/08/Estres-en-el-trabajo-ASISPA.jpg",
+            "title": "Manejo de estrés",
+            "date": "22 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        }
+    ],
+    "events_today": [
+        {
+            "imgSrc": "https://i0.wp.com/blog.webtraining.zone/wp-content/uploads/2018/01/curso-profesional-vue.jpg?resize=825%2C510&ssl=1",
+            "title": "Taller VueJs",
+            "date": "10 de Abril, 18:00 (GMT -5)",
+            "location": "Calle Las Flores, San Isidro, Perú"
+        },
+        {
+            "imgSrc": "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp",
+            "title": "Meditación desde casa",
+            "date": "20 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://asispa.org/wp-content/uploads/2023/08/Estres-en-el-trabajo-ASISPA.jpg",
+            "title": "Manejo de estrés",
+            "date": "22 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://images.ecency.com/p/2ai8Wx7yRZDoNcamXiWEb6bW3phQBZ4cV9Fq1No1NczS2dJHPrCoJvhaQd9vcD85VyKMTXksvKk3Fc7gbQLy5vjKJ6hXRbhEnHwqYS6mcMGh8PLihf7vWzKM6nYxdoobEqr9w7LBpm5mAxwzzAhbwpKu8EFLrzoYmi7qk6ff4mCBgtjPyNoEFoeZWYFRYLX1QJ1uMjNLmhAsHP8L3rRfoRL53CATAUxB5p.png?format=match&mode=fit",
+            "title": "¿Cómo emprender?",
+            "date": "23 de Abril, 18:00 (GMT -5)",
+            "location": "Calle Las Flores, San Isidro, Perú"
+        }
+    ],
+    "more_events": [
+        {
+            "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVumWgDx7_wRxavBmL7YwsamagRZyDCUdW8VHoIE56Q&s",
+            "title": "Introducción a la Nube",
+            "date": "09 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://i0.wp.com/blog.webtraining.zone/wp-content/uploads/2018/01/curso-profesional-vue.jpg?resize=825%2C510&ssl=1",
+            "title": "Taller VueJs",
+            "date": "10 de Abril, 18:00 (GMT -5)",
+            "location": "Calle Las Flores, San Isidro, Perú"
+        },
+        {
+            "imgSrc": "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp",
+            "title": "Meditación desde casa",
+            "date": "20 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://asispa.org/wp-content/uploads/2023/08/Estres-en-el-trabajo-ASISPA.jpg",
+            "title": "Manejo de estrés",
+            "date": "22 de Abril, 18:00 (GMT -5)",
+            "location": "Online"
+        },
+        {
+            "imgSrc": "https://images.ecency.com/p/2ai8Wx7yRZDoNcamXiWEb6bW3phQBZ4cV9Fq1No1NczS2dJHPrCoJvhaQd9vcD85VyKMTXksvKk3Fc7gbQLy5vjKJ6hXRbhEnHwqYS6mcMGh8PLihf7vWzKM6nYxdoobEqr9w7LBpm5mAxwzzAhbwpKu8EFLrzoYmi7qk6ff4mCBgtjPyNoEFoeZWYFRYLX1QJ1uMjNLmhAsHP8L3rRfoRL53CATAUxB5p.png?format=match&mode=fit",
+            "title": "¿Cómo emprender?",
+            "date": "23 de Abril, 18:00 (GMT -5)",
+            "location": "Calle Las Flores, San Isidro, Perú"
+        }
+    ]
+  }
