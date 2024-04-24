@@ -38,6 +38,7 @@ class Event(BaseModel):
     event_organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event_location = models.CharField(max_length=100)
     event_date = models.DateTimeField()
+    event_hour = models.TimeField()
     event_picture = models.ImageField(upload_to="event_pictures/", blank=True, null=True)
     paid = models.BooleanField()
     price = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
