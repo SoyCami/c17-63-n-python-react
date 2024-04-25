@@ -15,7 +15,7 @@ const CheckBoxPrice: React.FC<CheckBoxPriceProps> = ({ label, style }) => {
     };
 
     return (
-        <div style={{ ...style, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ ...style, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '24px'}}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <label htmlFor={label} className="mb-2" style={{fontSize: '1.2em', color: '#143C3A', fontWeight: 'bold', marginRight: '10px'}}>
                     {label}
