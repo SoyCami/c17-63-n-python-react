@@ -1,11 +1,12 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchEventCategories, saveUserInterests } from '@/api/userInterests';
-import styles from './page.module.css';
+import styles from './page.module.css'
 import Image from 'next/image';
 
-export default function SelectInterests(): ReactElement {
+
+const SelectInterests: React.FC = () => {
   const [eventCategories, setEventCategories] = useState<any[]>([]);
   const [interestsSelected, setInterestsSelected] = useState<string[]>([]);
 
@@ -38,7 +39,7 @@ export default function SelectInterests(): ReactElement {
         setInterestsSelected([...interestsSelected, value]);
       } else {
         event.target.checked = false;
-       
+
       }
     } else {
       setInterestsSelected(interestsSelected.filter(interest => interest !== value));
@@ -51,14 +52,14 @@ export default function SelectInterests(): ReactElement {
         <div>
           <div className="items-center pl-16 text-center">
             <h1 className="py-8 px-3 lg:text-3xl font-bold text-[#143C3A]">
-              Empieza escogiendo algnos intereses
+              ¡Empieza escogiendo algunos interesés!
             </h1>
             <p  className="py-8 px-3 font-bold text-[#143C3A]">
-              Elige 3 categorías de tu interes para que te aparezcan eventos relacionados a tus preferencias, estas son las categorías:
+              Elige 3 categorías de tu interés y así puedas ver todos eventos relacionados a tus preferencias. Estas son las categorías:
             </p>
           </div>
         </div>
-    
+
         <div id="interests" className="section relative pt-5 md:pt-5 bg-white md:flex space-x-16">
           <div className="container xl:max-w-6xl mx-auto px-4">
             <div className="flex flex-wrap flex-row -mx-4 text-center">
@@ -68,8 +69,10 @@ export default function SelectInterests(): ReactElement {
                 >
                   <div className="flex flex-wrap flex-row -mx-4 text-center">
                     {eventCategories &&
-                      eventCategories.map((category) => (
-                      <div key={category.id} className="interest flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                      eventCategories.map((category) => {
+                      console.log(category)
+                      return <div key={category.id} className="interest flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                        
                         <div className="py-8 px-12 mb-12">
                           <label htmlFor={`checkbox-${category.id}`} className={`${styles.label} ${interestsSelected.includes(category.id) ? styles.selected : ''}`}>
                             <input
@@ -81,16 +84,18 @@ export default function SelectInterests(): ReactElement {
                               id={`checkbox-${category.id}`} 
                               onClick={() => document.getElementById(`checkbox-${category.id}`)?.click()}
                             />
-                            <Image
+                            {category.image ? <Image 
+                            width={100}
+                              height={100}
                               src={category.image}
                               alt={category.name}
                               className={`${styles.image}`} 
-                            />
+                            />:null}
                           </label>
                           <label className="text-lg text-[#143C3A] leading-normal mb-2 font-semibold">{category.name}</label>
                         </div>
                       </div>
-                    ))}
+})}
                   </div>
                 <button type="submit" className={`${styles.button} px-3 py-2 mb-4 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-white text-black hover:bg-black hover:text-white`} >Guardar</button>
               </form>
@@ -102,3 +107,4 @@ export default function SelectInterests(): ReactElement {
   );
 };
 
+export default SelectInterests;

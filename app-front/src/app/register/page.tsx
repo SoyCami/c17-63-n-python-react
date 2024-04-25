@@ -4,14 +4,19 @@ import React, { FormEvent, ReactElement, useEffect, useState } from 'react';
 import { postRegisterUser } from '@/api/postRegisterUser';
 import EmailField from '@/components/templates/inputs/EmailTextField/EmailField';
 import SignUpPassword from '@/components/templates/inputs/SignUpPassword/SignUpPassword';
-import SelectCountryMR from '@/components/molecules/SelectCountry/SelectCountry';
 import SelectCountry from '@/components/molecules/SelectCountry/SelectCountry';
+import { IdNumberTextField } from '@/components/templates/inputs/IdNumberTextField/IdNumberTextField';
+import Phone from '@/components/templates/inputs/PhoneField/PhoneField';
+import NameField from '@/components/inputs/NameField/NameField';
+// import LastNameField from '@/components/inputs/LastNameField/LastNameField';
 
-export default function SignUpPage(): ReactElement {
+export default function RegisterPage(): ReactElement {
     const [requirements, setRequeriments] = useState(false);
     const [email, setEmail] = useState('');
     const [emailConfirm, setEmailConfirm] = useState('');
     const [matchEmails, setMatchEmails] = useState(false);
+    const [firstName, setFirstName] = useState('');
+    // const [lastName, setLastName] = useState('');
     const [selects, setSelects] = useState({
         idType: '',
         nationalId: '',
@@ -20,6 +25,7 @@ export default function SignUpPage(): ReactElement {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [registeredUser, setRegisteredUser] = useState(false);
+
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
@@ -82,6 +88,21 @@ export default function SignUpPage(): ReactElement {
         setMatchEmails(email === emailConfirm);
     }, [email, emailConfirm]);
 
+    const handlePhoneNumberChange = (phoneNumber: string, callingCode: string): void => {
+        setSelects(prevState => ({
+            ...prevState,
+            phoneCountry: callingCode
+        }));
+    };
+
+    const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFirstName(event.target.value);
+      };
+
+    //   const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     setLastName(event.target.value);
+    //   };
+
     return (
         <div className="flex min-h-screen bg-white">
             {/* Sidebar */}
@@ -108,24 +129,27 @@ export default function SignUpPage(): ReactElement {
                 </div>
 
                 {/* Contenedor del Formulario */}
-                <form onSubmit={handleSubmit} className="flex flex-1 flex-col justify-center space-y-5 max-w-md">
-                    {/* Título del Formulario */}
-                    <div className="flex flex-col space-y-2 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-black">¡Crea una cuenta!</h2>
-                        <p className="mb-4 text-sm text-gray-700">Estás a un click de unirte a la mejor plataforma para hacer conexiones y conocer los mejores eventos </p>
-                        <p className="mb-4 text-sm text-gray-700">¡Llena todos los campos para unirte a la comunidad!</p>
-                    </div>
+                <div className="form-container">
+    <form onSubmit={handleSubmit} className="flex flex-1 flex-col justify-center space-y-5 max-w-md">
+        {/* Título del Formulario */}
+        <div className="flex flex-col space-y-2 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-black">¡Crea una cuenta!</h2>
+            <p className="mb-4 text-sm text-gray-700">Estás a un click de unirte a la mejor plataforma para hacer conexiones y conocer los mejores eventos </p>
+            <p className="mb-4 text-sm text-gray-700">¡Llena todos los campos para unirte a la comunidad!</p>
+        </div>
 
-                    <div className="flex flex-col max-w-md space-y-5">
-                        <EmailField
-                        />
-                        <SignUpPassword />
-                        <SelectCountry name={''} id={''}  />
-                                        <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">Crear cuenta</button>
-                        
-                       
-                    </div>
-                </form>
+        <div className="flex flex-col max-w-md space-y-5">
+            <NameField value={firstName} onChange={handleFirstNameChange} />
+            {/* <LastNameField value={lastName} onChange={handleLastNameChange} /> */}
+            <EmailField />
+            <SignUpPassword />
+            <Phone onSelectPhoneNumber={handlePhoneNumberChange} />
+            <SelectCountry name={''} id={''}  />
+            <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">Crear cuenta</button>
+            <IdNumberTextField />
+        </div>
+    </form>
+</div>
             </div>
         </div>
     );
