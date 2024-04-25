@@ -34,7 +34,7 @@ export const saveEvent = async (event: Event): Promise<ApiResponse> => {
             success: true,
             data,
         };
-    } catch (error) {
+    } catch (error: any) {
         return {
             success: false,
             error: error.message || 'Error al crear el evento',

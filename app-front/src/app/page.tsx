@@ -10,15 +10,10 @@ import EventDetailsPopup from '@/components/organisms/EventDetails/EventDetailsP
 
 export default function Home() {
   return (
-
       <div>
           <Header/>
           <MainScreen/>
           <FooterScreen/>
       </div>
-        <div>
-               
-            <EventDetailsPopup />
-        </div>
-  );
+  )
 }

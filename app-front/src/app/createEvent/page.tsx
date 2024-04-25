@@ -1,6 +1,8 @@
 'use client';
 import InputField from "@/components/inputs/InputField/InputField";
-import {Btn} from "@/components/atoms/Btn/Btn";
+import CheckBoxPrice from "@/components/atoms/CheckBoxPrice/CheckBoxPrice";
+import CheckBoxLimit from "@/components/atoms/CheckBoxLimit/CheckBoxLimit";
+import EventCategorySelector from "@/components/inputs/EventCategorySelector/EventCategorySelector";
 import React from "react";
 
 export default function CreateEventPage() {
@@ -74,6 +76,24 @@ export default function CreateEventPage() {
                 placeholder={"Ingresar organizadores"}
                 validate={validateText}
                 errorMessage={"El campo es obligatorio"}
+            />
+
+            <CheckBoxPrice
+                label={"Evento pago"}
+                checked={false}
+                onChange={(checked) => console.log(checked)}
+                style={{ marginBottom: '20px' }} // Agrega esto
+            />
+
+            <CheckBoxLimit
+                label={"Límite de asistentes"}
+                checked={false}
+                onChange={(checked) => console.log(checked)}
+            />
+
+            <EventCategorySelector
+                label={"Categoría"}
+                placeholder={"Seleccionar categoría"}
             />
 
             <InputField
