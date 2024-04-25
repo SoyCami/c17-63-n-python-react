@@ -1,8 +1,3 @@
-import Image from "next/image";
-
-interface mainScreenData {
-
-}
 
 export default function MainScreen () {
     return (
@@ -51,7 +46,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://img-c.udemycdn.com/course/480x270/2853486_09f9.jpg"
                                                 alt=""/>
@@ -78,7 +73,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://img-c.udemycdn.com/course/750x422/3624814_4744_3.jpg"
                                                 alt=""/>
@@ -105,7 +100,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://www.edenred.es/wp-content/uploads/2022/02/estres-laboral.jpg"
                                                 alt=""/>
@@ -132,7 +127,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://www.edenred.es/wp-content/uploads/2022/02/estres-laboral.jpg"
                                                 alt=""/>
@@ -167,7 +162,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://img-c.udemycdn.com/course/480x270/2853486_09f9.jpg"
                                                 alt=""/>
@@ -195,7 +190,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://img-c.udemycdn.com/course/750x422/3624814_4744_3.jpg"
                                                 alt=""/>
@@ -223,7 +218,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://www.edenred.es/wp-content/uploads/2022/02/estres-laboral.jpg"
                                                 alt=""/>
@@ -251,7 +246,7 @@ export default function MainScreen () {
                                     <article
                                         className="bg-[#CDE7E6] w-60 p-6 mb-20 transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
                                         <div className=" w-full mb-6">
-                                            <Image
+                                            <img
                                                 className="max-h-60 w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
                                                 src="https://www.edenred.es/wp-content/uploads/2022/02/estres-laboral.jpg"
                                                 alt=""/>
