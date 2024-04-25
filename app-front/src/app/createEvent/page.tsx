@@ -3,9 +3,47 @@ import InputField from "@/components/inputs/InputField/InputField";
 import CheckBoxPrice from "@/components/atoms/CheckBoxPrice/CheckBoxPrice";
 import CheckBoxLimit from "@/components/atoms/CheckBoxLimit/CheckBoxLimit";
 import EventCategorySelector from "@/components/inputs/EventCategorySelector/EventCategorySelector";
-import React from "react";
+import {saveEvent} from "@/api/createEvent";
+import React, {useState} from "react";
 
-export default function CreateEventPage() {
+const CreateEventPage: React.FC = () => {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("");
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    const [picture, setPicture] = useState<FileList>();
+    const [paid, setPaid] = useState(false);
+    const [price, setPrice] = useState(0);
+    const [hasLimit, setHasLimit] = useState(false);
+    const [limit, setLimit] = useState(0);
+    const [category, setCategory] = useState("");
+
+    const handleSubmit = async () => {
+        console.log("se intenta")
+        const Event = {
+            event_name: title,
+            event_description: description,
+            event_location: location,
+            event_date: date,
+            event_hour: time,
+            event_picture: picture,
+            paid: paid,
+            price: price,
+            has_limit: hasLimit,
+            limit: limit,
+            event_category: category
+        }
+
+        try {
+            const response = await saveEvent(Event);
+            console.log("Evento creado con éxito", response.data);
+        } catch (error) {
+            console.error("Error al crear el evento", error);
+        }
+    }
+
+
     const validateText = (value: string | FileList) => {
         if (typeof value === 'string') {
             // Agrega aquí tu lógica de validación para valores de tipo string
@@ -94,6 +132,7 @@ export default function CreateEventPage() {
             <EventCategorySelector
                 label={"Categoría"}
                 placeholder={"Seleccionar categoría"}
+                style={{ marginTop: '20px' }}
             />
 
             <InputField
@@ -105,9 +144,11 @@ export default function CreateEventPage() {
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-                <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black text-white" style={{ backgroundColor: '#143C3A' }}>Crear evento</button>
+                <button onClick={handleSubmit} className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black text-white" style={{ backgroundColor: '#143C3A' }}>Crear evento</button>
             </div>
             </div>
         </div>
     );
 }
+
+export default CreateEventPage;
