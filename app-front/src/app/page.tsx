@@ -5,6 +5,8 @@ import TopEvents from "@/app/TopEvents/page";
 import Header from "@/components/layouts/Header/Header";
 import MainScreen from "@/app/MainScreen/Page";
 import FooterScreen from "@/components/layouts/FooterScreen/FooterScreen";
+import EventDetailsPopup from '@/components/organisms/EventDetails/EventDetailsPopup';
+
 
 export default function Home() {
   return (
@@ -14,5 +16,9 @@ export default function Home() {
           <MainScreen/>
           <FooterScreen/>
       </div>
+        <div>
+               
+            <EventDetailsPopup />
+        </div>
   );
 }
