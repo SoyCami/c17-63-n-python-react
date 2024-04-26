@@ -23,28 +23,18 @@ export default function EventDetailsPopup(props: any) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Simulación de datos para probar el componente
-    // const mockEventData = {
-    //   title: 'Evento de Prueba',
-    //   dateTime: '2024-04-24T10:00:00Z',
-    //   location: 'Calle Las Flores Nro 151, San Isido, Perú',
-    //   description:
-    //     'Lorem ipsum dolor sit amet consectetur adipiscing elit potenti netus, eros tortor erat porta non purus scelerisque lacinia, ullamcorper semper torquent porttitor nascetur tristique odio magnis. Consequat dictum gravida cubilia eros montes felis non, aliquam id volutpat at conubia condimentum.',
-    //   image: 'https://via.placeholder.com/300',
-    //   recommendations: ['Recomendación 1', 'Recomendación 2'],
-    //   organizers: ['Organizador 1'],
-    // };
 
     const mockEventData = props.props;
-
-    console.log("props ", mockEventData)
+    if(mockEventData.recommendations.length == 0) {
+      mockEventData.recommendations = ["Presentar tu identificación.", "Llegar 5 minutos antes al evento."]
+    }
 
     const dateObj = new Date(mockEventData.dateTime);
     const date = dateObj.toLocaleDateString();
     const time = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
 
     setEventData({ ...mockEventData, date, time });
-  }, []);
+  }, [props.props]);
 
   const handleAttendClick = () => {
     if (isLoggedIn) {
@@ -59,7 +49,7 @@ export default function EventDetailsPopup(props: any) {
     setIsLoading(true);
     setTimeout(() => {
       // Simulación de redireccionamiento después de 1 segundo
-      window.location.href = '/login';
+      window.location.href = '/home';
     }, 1000);
   };
 
@@ -68,21 +58,30 @@ export default function EventDetailsPopup(props: any) {
       {showLoginPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg p-8">
-            <h2 className="font-normal mb-4 text-black">Para asistir a este evento, debes estar logueado</h2>
+
+            <div className="flex justify-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-8 w-8 text-white">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+            </div>
+
+            <h2 className="font-normal my-4 text-black">Registro Exitoso</h2>
             <div className="mt-8 flex items-center justify-center">
               {/* Aquí se cambia el contenido del botón según isLoading */}
               {isLoading ? (
                 <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gray-900"></div>
               ) : (
-                <button onClick={handleLoginPopupClose} className="px-4 py-2 rounded-md bg-[#143C3A] text-white">
-                  Ir al Login
-                </button>
+                <span onClick={handleLoginPopupClose} className="px-4 py-2 rounded-md bg-[#143C3A] text-white">
+                  Finalizar
+                </span>
               )}
             </div>
           </div>
         </div>
       )}
-      <div className="rounded-lg bg-gray px-16 py-14 flex" style={{ padding: '30px' }}>
+      <div className="rounded-lg bg-gray px-16 py-14 flex" style={{ padding: '40px' }}>
         {eventData && (
           <>
             <div className="flex-1">
@@ -109,8 +108,10 @@ export default function EventDetailsPopup(props: any) {
                     <p className="font-semibold text-gray-700">{eventData.location}</p>
                   </div>
                 </div>
-                <div className="mx-auto my-2" style={{ maxWidth: '200px' }}>
-                  <Image src={eventData.image} alt={eventData.title} width={200} height={200} style={{ borderRadius: '15px' }} />
+                <div className="mx-auto my-2" style={{ maxWidth: '300px' }}>
+                  <Image src={eventData.image?? 
+                        "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                    } alt={eventData.title} width={300} height={300} style={{ borderRadius: '15px' }} />
                 </div>
               </div>
               <div className="flex flex-col">
