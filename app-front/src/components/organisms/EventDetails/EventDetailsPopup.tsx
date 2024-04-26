@@ -16,7 +16,7 @@ interface EventData {
   organizers: string[];
 }
 
-export default function EventDetailsPopup() {
+export default function EventDetailsPopup(props: any) {
   const [eventData, setEventData] = useState<EventData | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -24,16 +24,20 @@ export default function EventDetailsPopup() {
 
   useEffect(() => {
     // Simulación de datos para probar el componente
-    const mockEventData = {
-      title: 'Evento de Prueba',
-      dateTime: '2024-04-24T10:00:00Z',
-      location: 'Calle Las Flores Nro 151, San Isido, Perú',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit potenti netus, eros tortor erat porta non purus scelerisque lacinia, ullamcorper semper torquent porttitor nascetur tristique odio magnis. Consequat dictum gravida cubilia eros montes felis non, aliquam id volutpat at conubia condimentum. Vel quis viverra urna dis pharetra duis feugiat aliquet malesuada, suscipit conubia habitant sollicitudin justo nibh augue turpis, rhoncus morbi scelerisque a tortor accumsan nec egestas.',
-      image: 'https://via.placeholder.com/300',
-      recommendations: ['Recomendación 1', 'Recomendación 2'],
-      organizers: ['Organizador 1', 'Organizador 2'],
-    };
+    // const mockEventData = {
+    //   title: 'Evento de Prueba',
+    //   dateTime: '2024-04-24T10:00:00Z',
+    //   location: 'Calle Las Flores Nro 151, San Isido, Perú',
+    //   description:
+    //     'Lorem ipsum dolor sit amet consectetur adipiscing elit potenti netus, eros tortor erat porta non purus scelerisque lacinia, ullamcorper semper torquent porttitor nascetur tristique odio magnis. Consequat dictum gravida cubilia eros montes felis non, aliquam id volutpat at conubia condimentum.',
+    //   image: 'https://via.placeholder.com/300',
+    //   recommendations: ['Recomendación 1', 'Recomendación 2'],
+    //   organizers: ['Organizador 1'],
+    // };
+
+    const mockEventData = props.props;
+
+    console.log("props ", mockEventData)
 
     const dateObj = new Date(mockEventData.dateTime);
     const date = dateObj.toLocaleDateString();
@@ -60,7 +64,7 @@ export default function EventDetailsPopup() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex max-h-[90vh] items-center justify-center bg-white">
       {showLoginPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg p-8">
@@ -78,7 +82,7 @@ export default function EventDetailsPopup() {
           </div>
         </div>
       )}
-      <div className="rounded-lg bg-gray-50 px-16 py-14 flex" style={{ padding: '30px' }}>
+      <div className="rounded-lg bg-gray px-16 py-14 flex" style={{ padding: '30px' }}>
         {eventData && (
           <>
             <div className="flex-1">

@@ -1,34 +1,98 @@
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; 
+
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import EventDetailsPopup from "@/components/organisms/EventDetails/EventDetailsPopup";
+import { fetchHomeUser, fetchHomeUserApi } from "@/api/homeUser"
+
 import Image from 'next/image';
 
+
 interface IEvent {
-    imgSrc: string;
+    id: number;
+    event_name: string;
+    event_description: string;
+    event_category: {
+        id: number;
+        name: string;
+        description: string;
+        image: string | null;
+    };
+    event_date: string;
+    event_hour: string;
+    event_location: string;
+    event_organizer: {
+        id: number;
+        email: string;
+        name: string;
+        last_name: string;
+        phone: string;
+    };
+    is_online: boolean;
+    event_picture: string;
+    has_limit: boolean;
+    limit: number | null;
+    paid: boolean;
+    price: number | null;
+    recommendations: string | null;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+}
+
+interface IEventData {
     title: string;
-    date: string;
+    dateTime: string;
     location: string;
+    description: string;
+    image: string;
+    recommendations?: string | [];
+    organizers: string[];
+  }
+
+interface IUserData {
+    email: string;
+    has_selected_categories: boolean;
+    id: number;
+    last_name: string;
+    name: string;
+    phone: string;
+    user_type: string;
+    username: string;
 }
   
 export default function Home() {
     const [eventsForYou, setEventsForYou] = useState<IEvent[]>([]);
-    const [eventsToday, setEventsToday] = useState<IEvent[]>([]);
+    const [eventsMonthly, setEventsToday] = useState<IEvent[]>([]);
     const [moreEvents, setMoreEvents] = useState<IEvent[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [eventDetails, setEventDetails] = useState<IEventData | {}>();
+    const [userDetail, setUser] = useState<IUserData>();
+
+    const openModal = (eventDetail: IEventData) => {
+        setEventDetails(eventDetail)
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setEventDetails({})
+        setIsModalOpen(false);
+    };
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get('/events.json');
-                const { events_for_you, events_today, more_events } = response.data;
-                setEventsForYou(events_for_you);
-                setEventsToday(events_today);
-                setMoreEvents(more_events);
-            } catch (error) {
-                console.error('Error events:', error);
-            }
+        const token = localStorage.getItem('token');
+        const userLocal = localStorage.getItem('user');
+        if (userLocal !== null) {
+            const userData: IUserData = JSON.parse(userLocal);
+            setUser(userData);
         }
-
-        fetchData();
+        fetchHomeUserApi(token).then(data => {
+            setEventsForYou(data.interests)
+            setEventsToday(data.monthly)
+            setMoreEvents(data.more)
+        });
+        
     }, []);
 
 
@@ -37,7 +101,7 @@ export default function Home() {
             <div className="container xl:max-w-6xl mx-auto px-4 pb-10">
 
                 <section className="text-start mb-12">
-                    <h2 className="text-4xl leading-normal mb-2 font-bold text-[#143C3A]">Bienvenido, Usuario</h2>
+                    <h2 className="text-4xl leading-normal mb-2 font-bold text-[#143C3A]">Bienvenido, {userDetail?.name}</h2>
                 </section>
 
                 <section>
@@ -45,36 +109,57 @@ export default function Home() {
                         <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-2">Eventos para ti</p>
                         <div className="border-b-2 border-gray-300 my-2"></div>
                     </div>
-                    <div className="flex flex-wrap -mx-3 my-6">
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
                         {eventsForYou.map((event, index) => (
-                            <div key={index} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-3 mb-6">
-                                <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer
-                                transform transition duration-300 ease-in-out hover:-translate-y-2">
-                                    <Image className="w-full h-40 object-cover" src={event.imgSrc} alt="image" />
-                                    <div className="px-4 py-3 text-left bg-[#E1F1F1]">
-                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.title}</h3>
-                                    <p className="text-xs text-[#143C3A]">{event.date} <br /> {event.location}</p>
+
+                            <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
+                                onClick={() => openModal({
+                                    title: event.event_name,
+                                    dateTime: event.event_date,
+                                    location: event.event_location,
+                                    description: event.event_description,
+                                    image: event.event_picture,
+                                    recommendations: event.recommendations ?? [],
+                                    organizers: ['internationalHyena242'],
+                                })}>
+                                <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                                    <img className="w-full h-40 object-cover" src={event.event_picture} alt="image" />
+                                    <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
+                                        <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
+                                        <p className="text-xs text-[#143C3A]">{event.event_date} <br /> {event.event_location}</p>
+
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
                 </section>
 
                 <section>
                     <div>
-                        <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-1">Eventos de Hoy</p>
+                        <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-1">Eventos del Mes</p>
                         <div className="border-b-2 border-gray-300 my-2"></div>
                     </div>
-                    <div className="flex flex-wrap -mx-3 my-6">
-                        {eventsToday.map((event, index) => (
-                            <div key={index} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-3 mb-6">
-                                <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer
-                                transform transition duration-300 ease-in-out hover:-translate-y-2">
-                                    <Image className="w-full h-40 object-cover" src={event.imgSrc} alt="image" />
-                                    <div className="px-4 py-3 text-left bg-[#E1F1F1]">
-                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.title}</h3>
-                                    <p className="text-xs text-[#143C3A]">{event.date} <br /> {event.location}</p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
+                        {eventsMonthly.map((event, index) => (
+                            <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
+                                onClick={() => openModal({
+                                    title: event.event_name,
+                                    dateTime: event.event_date,
+                                    location: event.event_location,
+                                    description: event.event_description,
+                                    image: event.event_picture,
+                                    recommendations: event.recommendations ?? [],
+                                    organizers: ['internationalHyena242'],
+                                })}>
+                                <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                                    <img className="w-full h-40 object-cover" src={event.event_picture} alt="image" />
+                                    <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
+                                        <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
+                                        <p className="text-xs text-[#143C3A]">{event.event_date} <br /> {event.event_location}</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,15 +172,25 @@ export default function Home() {
                         <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-1">Más Eventos</p>
                         <div className="border-b-2 border-gray-300 my-2"></div>
                     </div>
-                    <div className="flex flex-wrap -mx-3 mt-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
                         {moreEvents.map((event, index) => (
-                            <div key={index} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-3 mb-6">
-                                <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer
-                                transform transition duration-300 ease-in-out hover:-translate-y-2">
-                                    <Image className="w-full h-40 object-cover" src={event.imgSrc} alt="image" />
-                                    <div className="px-4 py-3 text-left bg-[#E1F1F1]">
-                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.title}</h3>
-                                    <p className="text-xs text-[#143C3A]">{event.date} <br /> {event.location}</p>
+
+                            <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
+                                onClick={() => openModal({
+                                    title: event.event_name,
+                                    dateTime: event.event_date,
+                                    location: event.event_location,
+                                    description: event.event_description,
+                                    image: event.event_picture,
+                                    recommendations: event.recommendations ?? [],
+                                    organizers: ['internationalHyena242'],
+                                })}>
+                                <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                                    <img className="w-full h-40 object-cover" src={event.event_picture} alt="image" />
+                                    <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
+                                        <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
+                                        <p className="text-xs text-[#143C3A]">{event.event_date} <br /> {event.event_location}</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +198,14 @@ export default function Home() {
                     </div>
                 </section>
             </div>
+            {isModalOpen && ( 
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white w-1/2 h-[95vh] rounded-lg text-black p-2 relative">
+                        <IoMdCloseCircleOutline onClick={closeModal} size={32} className="self-end cursor-pointer absolute top-0 right-0 m-4 text-[#143C3A]"/>
+                        <EventDetailsPopup props={eventDetails}/>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
