@@ -39,7 +39,7 @@ export default function FooterScreen() {
                     <div className="flex items-center justify-between">
                         <a href="#">
                             <span className="bg-black rounded-full w-8 h-8"></span>
-                            <a href="#" className="font-medium text-xl">2024 FindUs</a>
+                            <p className="font-medium text-xl">2024 FindUs</p>
                         </a>
 
                     </div>

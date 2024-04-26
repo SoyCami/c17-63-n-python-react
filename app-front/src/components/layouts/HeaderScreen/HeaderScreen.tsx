@@ -5,7 +5,7 @@ export default function HeaderScreen(){
                 <div className="flex items-center gap-20 ">
                     <a href="#">
                         <span className="bg-black rounded-full w-8 h-8"></span>
-                        <a href="#" className="font-bold text-xl text-[#143C3A]">FindUs</a>
+                        <p className="font-bold text-xl text-[#143C3A]">FindUs</p>
                     </a>
 
                 </div>
