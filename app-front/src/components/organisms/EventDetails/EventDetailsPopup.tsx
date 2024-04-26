@@ -109,9 +109,10 @@ export default function EventDetailsPopup(props: any) {
                   </div>
                 </div>
                 <div className="mx-auto my-2" style={{ maxWidth: '300px' }}>
-                  <Image src={eventData.image?? 
-                        "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
-                    } alt={eventData.title} width={300} height={300} style={{ borderRadius: '15px' }} />
+                  <Image src={eventData.image ?
+                      `https://63pythonreact.pythonanywhere.com${eventData.image}`
+                      : "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                  } alt={eventData.title} width={300} height={300} style={{ borderRadius: '15px' }} />
                 </div>
               </div>
               <div className="flex flex-col">

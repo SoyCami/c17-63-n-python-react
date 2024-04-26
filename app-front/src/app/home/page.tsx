@@ -126,8 +126,9 @@ export default function Home() {
                                     })}>
                                     <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
                                         {/* <img className="w-full h-40 object-cover" src={event.event_picture} alt="image" /> */}
-                                        <Image src={event.event_picture ?? 
-                                            "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                                        <Image src={event.event_picture ?
+                                            `https://63pythonreact.pythonanywhere.com${event.event_picture}`
+                                            : "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
                                         } alt={'image'} width={200} height={200} className="w-full h-40 object-cover" />
                                         <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
                                             <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
@@ -159,8 +160,9 @@ export default function Home() {
                                         organizers: ['internationalHyena242'],
                                     })}>
                                     <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
-                                        <Image src={event.event_picture ?? 
-                                            "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                                        <Image src={event.event_picture ?
+                                            `https://63pythonreact.pythonanywhere.com${event.event_picture}`
+                                            : "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
                                         } alt={'image'} width={200} height={200} className="w-full h-40 object-cover" />
                                         <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
                                             <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
@@ -191,8 +193,9 @@ export default function Home() {
                                         organizers: ['internationalHyena242'],
                                     })}>
                                     <div key={index} className="rounded-xl overflow-hidden shadow-lg cursor-pointer">
-                                        <Image src={event.event_picture ?? 
-                                            "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                                        <Image src={event.event_picture ?
+                                            `https://63pythonreact.pythonanywhere.com${event.event_picture}`
+                                            : "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
                                         } alt={'image'} width={200} height={200} className="w-full h-40 object-cover" />
                                         <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
                                             <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
