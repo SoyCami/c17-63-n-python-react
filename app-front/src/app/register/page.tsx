@@ -16,6 +16,11 @@ export default function RegisterPage(): ReactElement {
     const [emailConfirm, setEmailConfirm] = useState('');
     const [matchEmails, setMatchEmails] = useState(false);
     const [firstName, setFirstName] = useState('');
+
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+      };
+
     // const [lastName, setLastName] = useState('');
     const [selects, setSelects] = useState({
         idType: '',
@@ -141,7 +146,7 @@ export default function RegisterPage(): ReactElement {
         <div className="flex flex-col max-w-md space-y-5">
             <NameField value={firstName} onChange={handleFirstNameChange} />
             {/* <LastNameField value={lastName} onChange={handleLastNameChange} /> */}
-            <EmailField />
+            <EmailField value={email} onChange={handleEmailChange} />
             <SignUpPassword />
             <Phone onSelectPhoneNumber={handlePhoneNumberChange} />
             <SelectCountry name={''} id={''}  />

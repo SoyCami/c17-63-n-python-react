@@ -1,4 +1,4 @@
-export default function Header(){
+export default function HeaderScreen(){
     return(
         <div>
             <nav className="flex items-center py-8 px-20 justify-between bg-[#E0F1F0]">
