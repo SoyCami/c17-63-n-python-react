@@ -1,5 +1,5 @@
 export const fetEventData = async () => {
-    const response = await fetch ('/api/v1/events/events/{id}/', {
+    const response = await fetch ('https://63pythonreact.pythonanywhere.com/api/v1/events/events/{id}/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
