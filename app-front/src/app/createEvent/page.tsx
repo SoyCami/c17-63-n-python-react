@@ -27,6 +27,7 @@ const CreateEventPage: React.FC = () => {
     const [locationError, setLocationError] = useState("");
 
     const handleSubmit = async () => {
+        const token = localStorage.getItem('token');
         let isValid = true;
 
         if (!title) {
@@ -69,7 +70,7 @@ const CreateEventPage: React.FC = () => {
         formData.append('event_category', category);
 
         try {
-            const response = await saveEvent(formData);
+            const response = await saveEvent(formData, token);
             if (!response.success) {
                 console.error("Error al crear el evento", response.error);
             } else {

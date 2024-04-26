@@ -4,9 +4,10 @@ interface ApiResponse {
     error?: string;
 }
 
-export const saveEvent = async (formData: FormData): Promise<ApiResponse> => {
+export const saveEvent = async (formData: FormData, token: any): Promise<ApiResponse> => {
     const myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Token 7a8520072fadd24ef37b825cd4ba77f92ecd828b')
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', `Token ${token}`)
 
     try {
         console.log('formData', formData)
