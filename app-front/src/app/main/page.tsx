@@ -44,9 +44,9 @@ export default function Main() {
                 <div className="md:flex flex-row items-center py-4">
                     <div className="md:flex-col items-center w-3/5">
                         <h1 className="py-4 px-3 lg:text-3xl font-bold text-[#143C3A] ">
-                            La plataforme que une a las personas y crea comunicades</h1>
+                            La plataforme que une a las personas y crea comunidades</h1>
                         <p className="py-4 px-3 lg:text-2xl font-light text-[#143C3A] ">
-                            Explora y discubre eventos con tus gustos e intereses, conoce personas
+                            Explora y descubre eventos con tus gustos e intereses, conoce personas
                             y comparte experiencias</p>
                         <div
                             onClick={handleLogin}
