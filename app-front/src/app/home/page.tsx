@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; 
+
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import EventDetailsPopup from "@/components/organisms/EventDetails/EventDetailsPopup";
 import { fetchHomeUser, fetchHomeUserApi } from "@/api/homeUser"

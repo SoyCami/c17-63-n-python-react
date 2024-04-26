@@ -1,13 +1,19 @@
-export const fetcLogin = async () => {
-    const response = await fetch ('https://3570-38-56-113-35.ngrok-free.app/api/v1/users/user/login/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify ({ email: 'new@new.com', password: 'new'
-    })
-    })
-    const data = await response.json()
+import axios from 'axios';
 
-    return data
-}
+export const fetchLoginPage = async () => {
+  try {
+    const response = await axios.post('https://63pythonreact.pythonanywhere.com/api/v1/users/user/login/', {
+      email: 'new@new.com',
+      password: 'new',
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    throw new Error('Error al iniciar sesión');
+  }
+};
