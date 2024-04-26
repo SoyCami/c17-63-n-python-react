@@ -112,7 +112,7 @@ export default function Home() {
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
-                            {eventsForYou.slice(0, 4).map((event, index) => (
+                            {eventsForYou && eventsForYou.slice(0, 4).map((event, index) => (
                                 <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
                                     key={index}
                                     onClick={() => openModal({
@@ -146,7 +146,7 @@ export default function Home() {
                             <div className="border-b-2 border-gray-300 my-2"></div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
-                            {eventsMonthly.slice(0, 4).map((event, index) => (
+                            {eventsMonthly && eventsMonthly.slice(0, 4).map((event, index) => (
                                 <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
                                     key={index}
                                     onClick={() => openModal({
@@ -178,7 +178,7 @@ export default function Home() {
                             <div className="border-b-2 border-gray-300 my-2"></div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
-                            {moreEvents.slice(0, 8).map((event, index) => (
+                            {moreEvents && moreEvents.slice(0, 8).map((event, index) => (
                                 <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
                                     key={index}
                                     onClick={() => openModal({
