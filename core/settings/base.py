@@ -26,6 +26,8 @@ def getenv(name: str, default=None):
 
 SECRET_KEY = getenv("DJANGO_SECRET_KEY")
 
+# ALLOWED_HOSTS = ["localhost", "127.0.0.1", "localhost:8000", "127.0.0.1:8000", "localhost:3000", "127.0.0.1:3000"]
+
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -118,7 +120,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # USER FIELD
 AUTH_USER_MODEL = "users.User"
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+CORS_ALLOW_HEADERS = (
+    "Accept", "Authorization", "Content-Type", "User-agent", "X-csrftoken", "X-requested-with",
+    "ngrok-skip-browser-warning"
+)
+CORS_EXPOSE_HEADERS = [
+    "ngrok-skip-browser-warning",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -154,7 +171,7 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "ENGINE BEHIND OUR SYSTEM",
     "VERSION": "0.1.0",
     "SERVE_INCLUDE_SCHEMA": False,
-    "SCHEMA_PATH_PREFIX": "/api/v1/",
+    "SCHEMA_PATH_PREFIX": "/api/v1/[a-zA-Z]*/",
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,
         # "displayOperationId": True,

@@ -10,14 +10,14 @@ from django.utils import timezone
 class EventCategory(BaseModel):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="event_categories/", blank=True, null=True)
+    image = models.ImageField(upload_to="event_categories/", null=True)
 
     def __str__(self):
         return self.name
 
 
 class Interests(BaseModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="interests")
     interest_1 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_1")
     interest_2 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_2")
     interest_3 = models.ForeignKey(EventCategory, on_delete=models.CASCADE, related_name="interest_3")
@@ -33,16 +33,18 @@ class Interests(BaseModel):
 
 class Event(BaseModel):
     event_name = models.CharField(max_length=100)
-    event_category = models.ForeignKey("EventCategory", on_delete=models.CASCADE)
+    event_category = models.ForeignKey("EventCategory", on_delete=models.CASCADE, related_name="events")
     event_description = models.TextField()
-    event_organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    is_online = models.BooleanField(default=False)
+    event_organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="events")
     event_location = models.CharField(max_length=100)
     event_date = models.DateTimeField()
     event_hour = models.TimeField()
-    event_picture = models.ImageField(upload_to="event_pictures/", blank=True, null=True)
+    recommendations = models.TextField(null=True)
+    event_picture = models.ImageField(upload_to="event_pictures/", null=True)
     paid = models.BooleanField()
-    price = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
-    has_limit = models.BooleanField()
+    price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
+    has_limit = models.BooleanField(default=False)
     limit = models.PositiveIntegerField(blank=True, null=True)
 
     def clean(self):
@@ -94,8 +96,8 @@ class EventReview(BaseModel):
         (5, "5 - Excelente"),
     )
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="event_reviews")
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="event_reviews")
     rating = models.PositiveIntegerField(choices=RATING_CHOICES)
     review_text = models.TextField(max_length=500)
 

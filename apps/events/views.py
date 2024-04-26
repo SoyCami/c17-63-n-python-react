@@ -1,11 +1,14 @@
+from datetime import timedelta
+
 from base.permissions import IsCustomerUser, IsOrganizerUser
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-from rest_framework import viewsets
+from django.utils import timezone
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.parsers import FormParser, MultiPartParser
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from .models import Event, EventCategory, EventRegisteredUser, EventReview, Interests
@@ -77,19 +80,74 @@ class EventViewSet(viewsets.ModelViewSet):
         else:
             raise PermissionDenied("Solo el organizador puede eliminar este evento.")
 
+    def list(self, request, *args, **kwargs):
+        now = timezone.now()
+
+        if request.query_params:
+            online = request.query_params.get("online") == "true"
+            if online:
+                queryset = self.queryset.filter(event_date__gte=now, is_online=True)
+            else:
+                queryset = self.queryset.filter(event_date__gte=now, is_online=False)
+
+            serializer = EventSerializer(queryset, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        # events that are into one month
+        one_month_later = now + timedelta(days=30)
+        monthly_events = self.queryset.filter(event_date__range=(now, one_month_later))
+        monthly_serializer = EventSerializer(monthly_events, many=True)
+
+        # more events
+        more_events = self.queryset.filter(event_date__gte=now)
+        more_serializer = EventSerializer(more_events, many=True)
+
+        # if user is authenticated return events based on its interests
+        if request.user.is_authenticated and request.user.has_selected_categories:
+            # user events based on interest
+            user_interests = [
+                request.user.interests.interest_1.id,
+                request.user.interests.interest_2.id,
+                request.user.interests.interest_3.id,
+            ]
+            interests_list = Event.objects.filter(event_category__in=user_interests, event_date__gte=now)
+            user_interests_ser = EventSerializer(interests_list, many=True)
+
+            return Response(
+                {
+                    "interests": user_interests_ser.data,
+                    "monthly": monthly_serializer.data,
+                    "more": more_serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            {
+                "data": more_serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )
+
     @action(detail=False, methods=["get"])
     def list_by_interests(self, request):
+        now = timezone.now()
         try:
             user_interests = request.user.interests
+            print("user_interests", user_interests)
         except ObjectDoesNotExist as e:
             print(e)
-            queryset = Event.objects.all()
+            queryset = Event.objects.filter(event_date__gte=now)
             serializer = EventSerializer(queryset, many=True)
-            return Response(serializer.data)
+            return Response({
+                "data": serializer.data,
+                "message": "No has seleccionado tus intereses, te mostramos los eventos disponibles!",
+            })
 
         queryset = Event.objects.filter(
             Q(event_category=user_interests.interest_1) | Q(event_category=user_interests.interest_2) |
-            Q(event_category=user_interests.interest_3)
+            Q(event_category=user_interests.interest_3),
+            event_date__gte=now,
         )
 
         serializer = EventSerializer(queryset, many=True)

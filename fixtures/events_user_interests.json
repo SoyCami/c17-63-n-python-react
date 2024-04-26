@@ -1,0 +1,28 @@
+[
+    {
+        "model": "events.interests",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "interest_1": 3,
+            "interest_2": 4,
+            "interest_3": 9,
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.interests",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "interest_1": 5,
+            "interest_2": 2,
+            "interest_3": 10,
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    }
+]

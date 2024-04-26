@@ -1,0 +1,153 @@
+[
+  {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+          "name": "John",
+          "last_name": "Doe",
+          "email": "johndoe@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "johndoe",
+          "phone": "1234567890"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 2,
+      "fields": {
+          "name": "Jane",
+          "last_name": "Smith",
+          "email": "janesmith@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "janesmith",
+          "phone": "0987654321"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 3,
+      "fields": {
+          "name": "Michael",
+          "last_name": "Johnson",
+          "email": "michaeljohnson@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "michaeljohnson",
+          "phone": "5555555555"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 4,
+      "fields": {
+          "name": "Emily",
+          "last_name": "Davis",
+          "email": "emilydavis@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "emilydavis",
+          "phone": "1111111111"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 5,
+      "fields": {
+          "name": "Robert",
+          "last_name": "Wilson",
+          "email": "robertwilson@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "robertwilson",
+          "phone": "9999999999"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 6,
+      "fields": {
+          "name": "Jennifer",
+          "last_name": "Brown",
+          "email": "jenniferbrown@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "jenniferbrown",
+          "phone": "7777777777"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 7,
+      "fields": {
+          "name": "William",
+          "last_name": "Taylor",
+          "email": "williamtaylor@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "williamtaylor",
+          "phone": "2222222222"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 8,
+      "fields": {
+          "name": "Jessica",
+          "last_name": "Miller",
+          "email": "jessicamiller@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "jessicamiller",
+          "phone": "8888888888"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 9,
+      "fields": {
+
+        "name": "David",
+        "last_name": "Anderson",
+        "email": "davidanderson@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+        "username": "davidanderson",
+        "phone": "3333333333"
+      }
+  },
+  {
+      "model": "users.user",
+      "pk": 10,
+      "fields": {
+          "name": "Amanda",
+          "last_name": "Thomas",
+          "email": "amandathomas@example.com",
+          "password": "pbkdf2_sha256$720000$YgDH1XzM3yFkKWk6P0aQpP$8lESpRSxscP1N+Ls8mMrhdQQ5V1O95h2UJldWvL8bT0=",
+          "created_at": "2024-04-01T12:00:00Z",
+          "updated_at": "2024-04-01T12:00:00Z",
+          "deleted_at": null,
+          "username": "amandathomas",
+          "phone": "6666666666"
+      }
+  }
+]

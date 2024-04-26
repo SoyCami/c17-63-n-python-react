@@ -124,12 +124,14 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(methods=["POST"], detail=False, permission_classes=[IsAuthenticated, IsCustomerUser])
     def upgrade_profile(self, request):
         with transaction.atomic():
-            user = User.objects.get(id=request.data["id"])
-            user_type = request.data["user_type"]
-            user.user_type = str(user_type)
-            user.save()
-            # Add specific logic to update profile for seller or organizer user
-            return Response(
-                {"message": f"User {user.username} has been updated to {user_type} user type"},
-                status=status.HTTP_200_OK,
-            )
+            user = User.objects.get(id=request.data["user_id"])
+            if user == request.user:
+                user_type = request.data["user_type"]
+                user.user_type = str(user_type)
+                user.save()
+                # Add specific logic to update profile for seller or organizer user
+                return Response(
+                    {"message": f"User {user.username} has been updated to {user_type} user type"},
+                    status=status.HTTP_200_OK,
+                )
+            return Response(status=status.HTTP_403_FORBIDDEN)

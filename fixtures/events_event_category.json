@@ -1,0 +1,112 @@
+[
+    {
+        "model": "events.eventcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Actividades Sociales",
+            "description": "Actividades Sociales",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Aficiones y Pasiones",
+            "description": "Aficiones y Pasiones",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Apoyo y Coaching",
+            "description": "Apoyo y Coaching",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 4,
+        "fields": {
+            "name": "Deportes y condicion fisica",
+            "description": "Deportes y condicion fisica",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 5,
+        "fields": {
+            "name": "Arte y Cultura",
+            "description": "Arte y Cultura",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 6,
+        "fields": {
+            "name": "Carrera y Negocios",
+            "description": "Carrera y Negocios",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 7,
+        "fields": {
+            "name": "Ciencia y Educacion",
+            "description": "Ciencia y Educacion",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 8,
+        "fields": {
+            "name": "Comunidad y Medio Ambiente",
+            "description": "Comunidad y Medio Ambiente",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 9,
+        "fields": {
+            "name": "Musica y Baile",
+            "description": "Musica y Baile",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 10,
+        "fields": {
+            "name": "Tecnologia",
+            "description": "Tecnologia",
+            "created_at": "2024-04-01T12:00:00Z",
+            "updated_at": "2024-04-01T12:00:00Z",
+            "deleted_at": null
+        }
+    }
+]
