@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 export default function Header(){
     return(
         <div>
-            <nav className="max-w-screen flex items-center py-8 px-20 justify-between bg-[#1D5A58]">
+            <nav className="max-w-screen flex items-center py-8 px-60 justify-between bg-[#1D5A58]">
                 <div className="flex items-center gap-10">
                     <a href="#">
                         <span className="bg-black rounded-full w-8 h-8"></span>
