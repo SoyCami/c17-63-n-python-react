@@ -1,12 +1,15 @@
 'use client';
 import {useEffect, useState} from "react";
 import Image from "next/image";
+import HeaderScreen from '@/components/layouts/HeaderScreen/HeaderScreen';
+import Footer from "@/components/layouts/Footer/Footer";
+
 
 interface MainData{
-    imgSrc: string;
-    title: string;
-    date: string;
-    location: string;
+    event_picture: string;
+    event_name: string;
+    event_date: string;
+    event_location: string;
 }
 
 export default function Main() {
@@ -16,10 +19,10 @@ export default function Main() {
     useEffect(() => {
         const fetchMainData = async () => {
             try {
-                const response = await fetch('/api/v1/events/events/');
+                const response = await fetch('https://63pythonreact.pythonanywhere.com/api/v1/events/events/');
                 const data = await response.json();
                 setMainEvents(data);
-                setMainCategories(data);
+                // setMainCategories(data);
             } catch (error) {
                 console.error('Error al obtener los eventos:', error);
             }
@@ -27,6 +30,8 @@ export default function Main() {
         fetchMainData();
     }, []);
     return (
+        <>
+        <HeaderScreen/>
         <div id="Main" className="section relative pt-20 md:pt-16 md:pb-0 bg-white ">
 
             <div className="container xl:max-w-6xl mx-auto px-4 pb-10">
@@ -43,8 +48,8 @@ export default function Main() {
                         </div>
                     </div>
                     <Image
-                        width={100}
-                        height={100}
+                        width={350}
+                        height={350}
                         className=" w-100 object-cover transition-transform duration-300 transform group-hover:scale-105"
                         src="https://Image.freepik.com/vector-premium/diseno-plano-juventud-dia-gente-abrazando_23-2148600298.jpg"
                         alt=""/>
@@ -53,7 +58,7 @@ export default function Main() {
 
             <section>
                 <div>
-                    <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-2">Eventos para ti</p>
+                    <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-2">Nuestros eventos</p>
                     <div className="border-b-2 border-gray-300 my-2"></div>
                 </div>
                 <div className="flex flex-wrap -mx-3 my-6">
@@ -61,10 +66,15 @@ export default function Main() {
                         <div key={index} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-3 mb-6">
                             <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer
                                 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                                <Image className="w-full h-40 object-cover" src={event.imgSrc} alt="image"/>
+                                <Image className="w-full h-40 object-cover" src={event.event_picture ?? 
+                                            "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                                        } alt="image"
+                                        width={200}
+                                        height={200}
+                                        />
                                 <div className="px-4 py-3 text-left bg-[#E1F1F1]">
-                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.title}</h3>
-                                    <p className="text-xs text-[#143C3A]">{event.date} <br/> {event.location}</p>
+                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.event_name}</h3>
+                                    <p className="text-xs text-[#143C3A]">{event.event_date} <br/> {event.event_location}</p>
                                 </div>
                             </div>
                         </div>
@@ -73,15 +83,21 @@ export default function Main() {
             </section>
 
             <section>
+                
                 <div className="flex flex-wrap -mx-3 my-6">
                     {mainEvents.map((event, index) => (
                         <div key={index} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 px-3 mb-6">
                             <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer
                                 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                                <Image className="w-full h-40 object-cover" src={event.imgSrc} alt="image"/>
+                                <Image className="w-full h-40 object-cover" src={event.event_picture ?? 
+                                            "https://assets-global.website-files.com/643ec769187f070822a2151e/6572194898bc5ea8e31a9cad_97-Crea-un-espacio-de-meditacio%CC%81n-en-casa-y-rela%CC%81jate-despue%CC%81s-de-un-di%CC%81a-pesado.webp"
+                                        } alt="image"
+                                        width={200}
+                                        height={200}
+                                        />
                                 <div className="px-4 py-3 text-left bg-[#E1F1F1]">
-                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.title}</h3>
-                                    <p className="text-xs text-[#143C3A]">{event.date} <br/> {event.location}</p>
+                                    <h3 className="text-base leading-normal mb-2 font-semibold text-black">{event.event_name}</h3>
+                                    <p className="text-xs text-[#143C3A]">{event.event_date} <br/> {event.event_location}</p>
                                 </div>
                             </div>
                         </div>
@@ -225,8 +241,8 @@ export default function Main() {
                         </div>
                     </div>
                     <Image
-                        width={100}
-                        height={100}
+                        width={360}
+                        height={360}
                         className="w-100 object-cover transition-transform duration-300 transform group-hover:scale-105"
                         src="https://i.pinimg.com/originals/5c/69/d7/5c69d7b70bd9dc491421a89a7712e364.jpg"
                         alt=""/>
@@ -234,5 +250,9 @@ export default function Main() {
             </div>
 
         </div>
+        <Footer />
+        </>
     );
 }
+       
+        
