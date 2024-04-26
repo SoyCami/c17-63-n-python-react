@@ -1,6 +1,10 @@
 import styles from './Header.module.css';
 
 export default function Header(){
+    const handleCreateEvent = () => {
+        window.location.href = '/createEvent';
+    };
+
     return(
         <div>
             <nav className="max-w-screen flex items-center py-8 px-60 justify-between bg-[#1D5A58]">
@@ -25,7 +29,7 @@ export default function Header(){
                 </div>
                 <div
                     className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">
-                    <button>Crear evento</button>
+                    <button onClick={handleCreateEvent}>Crear evento</button>
                 </div>
                 <div
                     className="text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer">

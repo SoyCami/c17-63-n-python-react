@@ -75,6 +75,7 @@ const CreateEventPage: React.FC = () => {
                 console.error("Error al crear el evento", response.error);
             } else {
                 console.log("Evento creado con éxito", response.data);
+                window.location.href = '/';
             }
         } catch (error) {
             console.error("Error al crear el evento", error);
