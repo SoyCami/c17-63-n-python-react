@@ -95,6 +95,8 @@ export default function Home() {
         
     }, []);
 
+    console.log("eventsForYou ", eventsForYou)
+
 
     return (
         <>
