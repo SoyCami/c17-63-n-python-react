@@ -27,7 +27,7 @@
         "event_location": "En línea",
         "event_date": "2024-05-20T18:00:00Z",
         "event_hour": "18:00:00",
-        "recommendations": ["Presentar tu identifiación", "Llegar 5 minutos antes"],
+        "recommendations": ["Presentar tu identificación.", "Llegar 5 minutos antes al evento."],
         "event_picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVumWgDx7_wRxavBmL7YwsamagRZyDCUdW8VHoIE56Q&s",
         "paid": false,
         "price": null,

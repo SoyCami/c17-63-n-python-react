@@ -2,7 +2,7 @@
 export default function Footer() {
     return(
         <div>
-            <footer className="bg-[#143C3A]">
+            <footer className="max-w-screen bg-[#143C3A]">
                 <div className="container px-6 py-12 mx-auto w-screen relative bottom-0 ">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                         <div className="sm:col-span-2">
