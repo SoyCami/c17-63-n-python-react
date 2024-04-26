@@ -52,7 +52,7 @@ const CreateEventPage: React.FC = () => {
         }
 
         const formData = new FormData();
-        const formattedDate = new Date(date).toISOString().slice(0, 10);
+        const formattedDate = date ? new Date(date).toISOString().slice(0, 10) : "";
         formData.append('event_name', title);
         formData.append('event_description', description);
         formData.append('is_online', 'true');
@@ -75,7 +75,7 @@ const CreateEventPage: React.FC = () => {
                 console.error("Error al crear el evento", response.error);
             } else {
                 console.log("Evento creado con éxito", response.data);
-                window.location.href = '/';
+                window.location.href = '/home';
             }
         } catch (error) {
             console.error("Error al crear el evento", error);

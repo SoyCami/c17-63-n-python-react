@@ -6,7 +6,6 @@ interface ApiResponse {
 
 export const saveEvent = async (formData: FormData, token: any): Promise<ApiResponse> => {
     const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', `Token ${token}`)
 
     try {
@@ -18,6 +17,7 @@ export const saveEvent = async (formData: FormData, token: any): Promise<ApiResp
             redirect: 'follow',
             credentials: 'include',
         });
+
 
         if (!resp.ok) {
             const errorData = await resp.json();
