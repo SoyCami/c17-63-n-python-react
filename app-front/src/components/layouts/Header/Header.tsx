@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Header.module.css';
 
 export default function Header(){
@@ -8,10 +9,12 @@ export default function Header(){
         <div>
             <nav className="max-w-screen flex items-center py-8 px-60 justify-between bg-[#1D5A58]">
                 <div className="flex items-center gap-10">
-                    <a href="#">
-                        <span className="bg-black rounded-full w-8 h-8"></span>
-                        <span className="font-medium text-xl">FindUs</span>
-                    </a>
+                    <Link href="/">
+                        <span>
+                            <span className="bg-black rounded-full w-8 h-8"></span>
+                            <span className="font-medium text-xl">FindUs</span>
+                        </span>
+                    </Link>
 
                     <div className="pt-2 relative mx-auto text-gray-600">
                         <input
@@ -19,7 +22,6 @@ export default function Header(){
                             type="search" name="search" placeholder="Busca un evento"/>
                     </div>
                 </div>
-
 
                 <div className="lg:flex flex-row gap-10">
                     <div
