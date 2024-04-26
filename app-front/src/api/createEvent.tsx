@@ -1,28 +1,26 @@
-interface Event {
-    // Define las propiedades del evento aquí
-}
-
 interface ApiResponse {
     success: boolean;
     data?: any;
     error?: string;
 }
 
-export const saveEvent = async (event: Event): Promise<ApiResponse> => {
+export const saveEvent = async (formData: FormData): Promise<ApiResponse> => {
     const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', 'Token 7a8520072fadd24ef37b825cd4ba77f92ecd828b')
 
     try {
+        console.log('formData', formData)
         const resp = await fetch('https://63pythonreact.pythonanywhere.com/api/v1/events/events/', {
             method: 'POST',
-            body: JSON.stringify({ event }),
+            body: formData,
             headers: myHeaders,
             redirect: 'follow',
-            credentials: 'include', // Si es necesario
+            credentials: 'include',
         });
 
         if (!resp.ok) {
             const errorData = await resp.json();
+            console.log(errorData)
             return {
                 success: false,
                 error: errorData.message || 'Error al crear el evento',

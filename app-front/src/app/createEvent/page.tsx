@@ -12,32 +12,69 @@ const CreateEventPage: React.FC = () => {
     const [location, setLocation] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
+    const [recomendation, setRecomendation] = useState("");
     const [picture, setPicture] = useState<FileList>();
     const [paid, setPaid] = useState(false);
     const [price, setPrice] = useState(0);
     const [hasLimit, setHasLimit] = useState(false);
     const [limit, setLimit] = useState(0);
     const [category, setCategory] = useState("");
+    const [pictureError, setPictureError] = useState("");
+    const [titleError, setTitleError] = useState("");
+    const [descriptionError, setDescriptionError] = useState("");
+    const [dateError, setDateError] = useState("");
+    const [timeError, setTimeError] = useState("");
+    const [locationError, setLocationError] = useState("");
 
     const handleSubmit = async () => {
-        console.log("se intenta")
-        const Event = {
-            event_name: title,
-            event_description: description,
-            event_location: location,
-            event_date: date,
-            event_hour: time,
-            event_picture: picture,
-            paid: paid,
-            price: price,
-            has_limit: hasLimit,
-            limit: limit,
-            event_category: category
+        let isValid = true;
+
+        if (!title) {
+            console.log("title", title);
+            setTitleError("El campo es obligatorio");
+            isValid = false;
         }
 
+        if (!description) {
+            console.log("description", description)
+            setDescriptionError("El campo es obligatorio");
+            isValid = false;
+        }
+
+        if (!picture || picture.length === 0) {
+            setPictureError("La imagen es obligatoria");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return;
+        }
+
+        const formData = new FormData();
+        const formattedDate = new Date(date).toISOString().slice(0, 10);
+        formData.append('event_name', title);
+        formData.append('event_description', description);
+        formData.append('is_online', 'true');
+        formData.append('event_location', location);
+        formData.append('event_date', formattedDate);
+        formData.append('event_hour', time);
+        formData.append('recommendations', recomendation);
+        if (picture && picture.length > 0) {
+            formData.append('event_picture', picture[0]);
+        }
+        formData.append('paid', paid.toString());
+        formData.append('price', price.toString());
+        formData.append('has_limit', hasLimit.toString());
+        formData.append('limit', limit.toString());
+        formData.append('event_category', category);
+
         try {
-            const response = await saveEvent(Event);
-            console.log("Evento creado con éxito", response.data);
+            const response = await saveEvent(formData);
+            if (!response.success) {
+                console.error("Error al crear el evento", response.error);
+            } else {
+                console.log("Evento creado con éxito", response.data);
+            }
         } catch (error) {
             console.error("Error al crear el evento", error);
         }
@@ -55,6 +92,16 @@ const CreateEventPage: React.FC = () => {
         }
     };
 
+    const validateFile = (value: string | FileList) => {
+        if (value instanceof FileList) {
+            // Verificar si se seleccionó un archivo
+            return value.length > 0;
+        } else {
+            // Por ahora, simplemente devolvemos true para valores de tipo string
+            return true;
+        }
+    };
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center', padding: '0 20px', backgroundColor: '#FFFFFF'}}>
             <div style={{ maxWidth: '800px', width: '100%' }}>
@@ -64,8 +111,13 @@ const CreateEventPage: React.FC = () => {
                 label="Título del evento"
                 placeholder="Ingresar título del evento"
                 validate={validateText}
-                errorMessage="El campo es obligatorio"
+                errorMessage={titleError}
                 style={{ marginTop: '30px' }}
+                value={title}
+                onChange={(e) => {
+                    setTitle(e.target.value);
+                    setTitleError(""); // Limpiar el error cuando el usuario cambia el valor
+                }}
             />
 
             <InputField
@@ -73,7 +125,12 @@ const CreateEventPage: React.FC = () => {
                 label={"Fecha"}
                 placeholder={"Ingresar fecha del evento"}
                 validate={validateText}
-                errorMessage={"El campo es obligatorio"}
+                errorMessage={dateError}
+                value={date}
+                onChange={(e) => {
+                    setDate(e.target.value);
+                    setDateError("");
+                }}
             />
 
             <InputField
@@ -81,15 +138,25 @@ const CreateEventPage: React.FC = () => {
                 label="Hora del evento"
                 placeholder="Ingresar hora del evento"
                 validate={validateText}
-                errorMessage="El campo es obligatorio"
+                errorMessage={timeError}
+                value={time}
+                onChange={(e) => {
+                    setTime(e.target.value);
+                    setTimeError("");
+                }}
             />
 
             <InputField
                 type="text"
-                label="Ubicación o Modalidad"
+                label="Ubicación"
                 placeholder="Ingresar ubicación del evento"
                 validate={validateText}
-                errorMessage="El campo es obligatorio"
+                errorMessage={locationError}
+                value={location}
+                onChange={(e) => {
+                    setLocation(e.target.value)
+                    setLocationError("");
+                }}
             />
 
             <InputField
@@ -97,50 +164,61 @@ const CreateEventPage: React.FC = () => {
                 label="Acerca del evento"
                 placeholder="Ingresar más detalles del evento"
                 validate={validateText}
-                errorMessage="El campo es obligatorio"
+                errorMessage={descriptionError}
+                value={description}
+                onChange={(e) => {
+                    setDescription(e.target.value);
+                    setDescriptionError(""); // Limpiar el error cuando el usuario cambia el valor
+                }}
             />
 
             <InputField
                 type="description"
                 label="Recomendaciones"
                 placeholder="Ingresar recomendaciones para el evento"
-                validate={validateText}
-                errorMessage="El campo es obligatorio"
-            />
-
-            <InputField
-                type={"description"}
-                label={"Organizador(es)"}
-                placeholder={"Ingresar organizadores"}
-                validate={validateText}
-                errorMessage={"El campo es obligatorio"}
+                errorMessage=""
+                value={recomendation}
+                onChange={(e) => setRecomendation(e.target.value)}
             />
 
             <CheckBoxPrice
                 label={"Evento pago"}
-                checked={false}
-                onChange={(checked) => console.log(checked)}
-                style={{ marginBottom: '20px' }} // Agrega esto
+                checked={paid}
+                onChange={(checked, price) => {
+                    setPaid(checked);
+                    setPrice(parseFloat(price)); // Asegúrate de convertir el precio a un número
+                }}
+                style={{ marginBottom: '20px' }}
             />
 
             <CheckBoxLimit
                 label={"Límite de asistentes"}
-                checked={false}
-                onChange={(checked) => console.log(checked)}
+                checked={hasLimit}
+                onChange={(checked, limit) => {
+                    setHasLimit(checked);
+                    setLimit(limit); // Actualiza el límite
+                }}
             />
 
             <EventCategorySelector
                 label={"Categoría"}
                 placeholder={"Seleccionar categoría"}
                 style={{ marginTop: '20px' }}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
             />
 
             <InputField
                 type={"file"}
                 label={"Imagen del evento"}
                 placeholder={"Ingresar imagen del evento"}
-                validate={validateText}
-                errorMessage={"El campo es obligatorio"}
+                validate={validateFile}
+                errorMessage={pictureError}
+                value={picture}
+                onChange={(e) => {
+                    setPicture((e.target as HTMLInputElement).files!);
+                    setPictureError(""); // Limpiar el error cuando el usuario cambia el valor
+                }}
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
