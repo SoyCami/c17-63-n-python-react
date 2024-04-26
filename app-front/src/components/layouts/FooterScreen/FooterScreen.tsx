@@ -1,8 +1,8 @@
 export default function FooterScreen() {
     return(
         <div>
-            <footer className="bg-[#143C3A]">
-                <div className="container px-6 py-12 mx-auto w-screen relative bottom-0 ">
+            <footer className="bg-[#143C3A] ">
+                <div className="container px-60 py-12 mx-auto w-screen relative bottom-0 ">
                     <div className="grid grid-cols-1 gap-0.5 lg:grid-cols-4">
                         <div>
                             <div className="flex flex-col items-start mt-5 space-y-2">

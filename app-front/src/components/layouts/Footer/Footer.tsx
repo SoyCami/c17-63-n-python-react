@@ -3,7 +3,7 @@ export default function Footer() {
     return(
         <div>
             <footer className="max-w-screen bg-[#143C3A]">
-                <div className="container px-6 py-12 mx-auto w-screen relative bottom-0 ">
+                <div className="container px-60 py-12 mx-auto w-screen relative bottom-0 ">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                         <div className="sm:col-span-2">
                             <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">Suscribete a nuestro sitio web para más información.</h1>

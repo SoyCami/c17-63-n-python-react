@@ -1,7 +1,7 @@
 export default function HeaderScreen(){
     return(
         <div>
-            <nav className="flex items-center py-8 px-20 justify-between bg-[#E0F1F0]">
+            <nav className="flex items-center py-8 px-60 justify-between bg-[#E0F1F0]">
                 <div className="flex items-center gap-20 ">
                     <a href="#">
                         <span className="bg-black rounded-full w-8 h-8"></span>
