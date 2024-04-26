@@ -1,0 +1,137 @@
+[
+    {
+    "model": "users.User",
+    "pk": 1,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "alex.johnson@example.com",
+      "password": "Password",
+      "username": "AlexJohnson",
+      "name": "Alex",
+      "last_name": "Johnson",
+      "user_type": "1"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 2,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "laura.miller@example.com",
+      "password": "Password",
+      "username": "LauraMiller",
+      "name": "Laura",
+      "last_name": "Miller",
+      "user_type": "1"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 3,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "william.brown@example.com",
+      "password": "Password",
+      "username": "WilliamBrown",
+      "name": "William",
+      "last_name": "Brown",
+      "user_type": "1"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 4,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "alex.johnson@example.com",
+      "password": "Password",
+      "username": "AlexJohnson",
+      "name": "Alex",
+      "last_name": "Johnson",
+      "user_type": "2"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 5,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "laura.miller@example.com",
+      "password": "Password",
+      "username": "LauraMiller",
+      "name": "Laura",
+      "last_name": "Miller",
+      "user_type": "2"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 6,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "william.brown@example.com",
+      "password": "Password",
+      "username": "WilliamBrown",
+      "name": "William",
+      "last_name": "Brown",
+      "user_type": "2"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 7,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "emma.watson@example.com",
+      "password": "Password",
+      "username": "EmmaWatson",
+      "name": "Emma",
+      "last_name": "Watson",
+      "user_type": "3"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 8,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "oliver.smith@example.com",
+      "password": "Password",
+      "username": "OliverSmith",
+      "name": "Oliver",
+      "last_name": "Smith",
+      "user_type": "3"
+    }
+  },
+  {
+    "model": "users.User",
+    "pk": 9,
+    "fields": {
+      "created_at": "2022-06-25T04:18:00.420Z",
+      "updated_at": "2022-06-25T04:18:00.420Z",
+      "deleted_at": null,
+      "email": "lidia.johnson@example.com",
+      "password": "Password",
+      "username": "LidiaJohnson",
+      "name": "Lidia",
+      "last_name": "Johnson",
+      "user_type": "3"
+    }
+  }
+]

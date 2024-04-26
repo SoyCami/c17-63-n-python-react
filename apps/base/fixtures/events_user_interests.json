@@ -1,0 +1,32 @@
+[
+    {
+        "model": "events.Interests",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "interest_1": 1,
+            "interest_2": 2,
+            "interest_3": 3
+        }
+    },
+    {
+        "model": "events.Interests",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "interest_1": 4,
+            "interest_2": 5,
+            "interest_3": 6
+        }
+    },
+    {
+        "model": "events.Interests",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "interest_1": 7,
+            "interest_2": 8,
+            "interest_3": 9
+        }
+    }
+]

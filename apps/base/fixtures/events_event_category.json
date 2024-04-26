@@ -1,0 +1,92 @@
+[
+    {
+        "model": "events.EventCategory",
+        "pk": 1,
+        "fields": {
+            "name": "Actividades sociales",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 2,
+        "fields": {
+            "name": "Aficiones y paciones",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 3,
+        "fields": {
+            "name": "Apoyo y coaching",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 4,
+        "fields": {
+            "name": "Arte y cultura",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 5,
+        "fields": {
+            "name": "Carrera y negocios",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 6,
+        "fields": {
+            "name": "Ciencia y educación",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 7,
+        "fields": {
+            "name": "Comunidad y medio ambiente",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 8,
+        "fields": {
+            "name": "Deportes y condición física",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 9,
+        "fields": {
+            "name": "Música y danza",
+            "description": null,
+            "image": null
+        }
+    },
+    {
+        "model": "events.EventCategory",
+        "pk": 10,
+        "fields": {
+            "name": "Tecnologia",
+            "description": null,
+            "image": null
+        }
+    }
+]

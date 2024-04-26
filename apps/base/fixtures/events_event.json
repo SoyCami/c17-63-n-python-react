@@ -1,0 +1,182 @@
+[
+    {
+        "model": "events.Event",
+        "pk": 1,
+        "fields": {
+            "event_name": "Fiesta de disfraces",
+            "event_category": 1,
+            "event_description": "Fiesta de disfraces",
+            "event_organizer": 7,
+            "event_location": "Calle 123",
+            "event_date": "2025-01-01T10:00:00Z",
+            "event_hour": "10:00:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 2,
+        "fields": {
+            "event_name": "Concierto en el parque",
+            "event_category": 9,
+            "event_description": "Concierto al aire libre",
+            "event_organizer": 7,
+            "event_location": "Parque Central",
+            "event_date": "2025-02-15T18:30:00Z",
+            "event_hour": "18:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 3,
+        "fields": {
+            "event_name": "Festival de flores",
+            "event_category": 7,
+            "event_description": "Festival de flores",
+            "event_organizer": 7,
+            "event_location": "Jardín Botánico",
+            "event_date": "2025-06-20T10:00:00Z",
+            "event_hour": "10:00:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 4,
+        "fields": {
+            "event_name": "Concierto de rock",
+            "event_category": 9,
+            "event_description": "Concierto de rock",
+            "event_organizer": 8,
+            "event_location": "Arena de rock",
+            "event_date": "2024-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 5,
+        "fields": {
+            "event_name": "Concierto de Jazz",
+            "event_category": 9,
+            "event_description": "Concierto de rock",
+            "event_organizer": 8,
+            "event_location": "Arena de rock",
+            "event_date": "2024-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 6,
+        "fields": {
+            "event_name": "Taller de arte",
+            "event_category": 4,
+            "event_description": "Taller de arte",
+            "event_organizer": 8,
+            "event_location": "Espacio de arte",
+            "event_date": "2024-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 7,
+        "fields": {
+            "event_name": "Charla sobre inteligencia artificial",
+            "event_category": 10,
+            "event_description": "Charla sobre inteligencia artificial",
+            "event_organizer": 9,
+            "event_location": "Universidad de Antioquia",
+            "event_date": "2024-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 8,
+        "fields": {
+            "event_name": "Charla sobre criptomonedas",
+            "event_category": 5,
+            "event_description": "Charla sobre criptomonedas",
+            "event_organizer": 9,
+            "event_location": "Arena de rock",
+            "event_date": "2024-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 9,
+        "fields": {
+            "event_name": "Taller de tango",
+            "event_category": 9,
+            "event_description": "Taller de tango",
+            "event_organizer": 9,
+            "event_location": "Salon de baile El Zorzal",
+            "event_date": "2025-01-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    },
+    {
+        "model": "events.Event",
+        "pk": 10,
+        "fields": {
+            "event_name": "Noche de los museos",
+            "event_category": 2,
+            "event_description": "Noche de los museos",
+            "event_organizer": 7,
+            "event_location": "Museo El Fuerte",
+            "event_date": "2025-10-30T19:30:00Z",
+            "event_hour": "19:30:00",
+            "event_picture": null,
+            "paid": false,
+            "price": null,
+            "has_limit": false,
+            "limit": null
+        }
+    }
+]
