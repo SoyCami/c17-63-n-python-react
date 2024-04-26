@@ -1,9 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; 
+
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import EventDetailsPopup from "@/components/organisms/EventDetails/EventDetailsPopup";
 import { fetchHomeUser, fetchHomeUserApi } from "@/api/homeUser"
+
+import Image from 'next/image';
+
 
 interface IEvent {
     id: number;
@@ -108,6 +112,7 @@ export default function Home() {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
                         {eventsForYou.map((event, index) => (
+
                             <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
                                 onClick={() => openModal({
                                     title: event.event_name,
@@ -123,6 +128,7 @@ export default function Home() {
                                     <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
                                         <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
                                         <p className="text-xs text-[#143C3A]">{event.event_date} <br /> {event.event_location}</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +142,7 @@ export default function Home() {
                         <p className="text-[#143C3A] leading-relaxed font-bold text-2xl mx-auto pb-1">Eventos del Mes</p>
                         <div className="border-b-2 border-gray-300 my-2"></div>
                     </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
                         {eventsMonthly.map((event, index) => (
                             <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
@@ -167,6 +174,7 @@ export default function Home() {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 py-6">
                         {moreEvents.map((event, index) => (
+
                             <div className="rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:-translate-y-2" 
                                 onClick={() => openModal({
                                     title: event.event_name,
@@ -182,6 +190,7 @@ export default function Home() {
                                     <div className="grid h-[120px] px-4 py-3 text-left bg-[#E1F1F1]">
                                         <h3 className="text-base leading-normal font-semibold text-black mb-2">{event.event_name}</h3>
                                         <p className="text-xs text-[#143C3A]">{event.event_date} <br /> {event.event_location}</p>
+
                                     </div>
                                 </div>
                             </div>
